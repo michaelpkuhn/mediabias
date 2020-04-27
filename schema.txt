@@ -1,0 +1,71 @@
+CREATE TABLE tweets_source (
+	tweet_id VARCHAR(255) PRIMARY KEY,
+	screen_name VARCHAR(255),
+	time VARCHAR(255),
+	--Made timestamp compatible column
+	url VARCHAR(255),
+	twt_txt TEXT,
+	twt_source VARCHAR(255),
+	user_id VARCHAR(255)
+)
+
+--Website count
+select substring(twt_txt from '.*://([^/]*)') as domain_name,
+count(*)
+from tweets_short GROUP BY domain_name
+ORDER BY count(*) desc;
+
+--add domain column
+select *, substring(twt_txt from '.*://([^/]*)') as domain_name
+from tweets_short;
+
+select *, substring(twt_txt from '.*://([^/]*)') as domain_name
+into twitter_table from tweets_source;
+
+
+CREATE TABLE member_accounts (
+	table_id SERIAL PRIMARY KEY,
+	mem_name VARCHAR(255),
+	chamber VARCHAR(30),
+	mem_type VARCHAR(255),
+	party VARCHAR(30),
+	accounts TEXT,
+	other_id VARCHAR(255),
+	us_state VARCHAR(30),
+	prev_prop VARCHAR(140)
+)
+
+--filter out caucuses etc
+select * from member_accounts where mem_type='member'
+
+--Panda manipulation
+CREATE TABLE accounts (
+	account_id BIGINT PRIMARY KEY,
+	mem_name VARCHAR(255),
+	screen_name VARCHAR(255)	
+)
+
+
+select twitter_table.tweet_id, accounts.account_id, twitter_table.screen_name, 
+accounts.mem_name,twitter_table.twt_time, twitter_table.url, twitter_table.twt_txt, 
+twitter_table.user_id, twitter_table.domain_name
+INTO final_table
+from twitter_table, accounts
+where twitter_table.screen_name = accounts.screen_name
+AND domain_name IS NOT NULL
+
+
+select * from final_table
+where domain_name != 't.co' and domain_name != 'pbs.twimg.com' and domain_name != 'video.twimg.com' and domain_name != 'twitter.com'
+and domain_name != 'bit.ly' and domain_name != 'trib.al' and domain_name != 'goo.gl' and domain_name != 'youtu.be'
+and domain_name != 'www.pscp.tv' and domain_name != 'fb.me' and domain_name != 'ow.ly' and domain_name != 'www.google.com'
+
+select domain_name,
+count(*)
+from final_table 
+where domain_name != 't.co' and domain_name != 'pbs.twimg.com' and domain_name != 'video.twimg.com' and domain_name != 'twitter.com'
+and domain_name != 'bit.ly' and domain_name != 'trib.al' and domain_name != 'goo.gl' and domain_name != 'youtu.be'
+and domain_name != 'www.pscp.tv' and domain_name != 'fb.me' and domain_name != 'ow.ly' and domain_name != 'www.google.com'
+GROUP BY domain_name
+ORDER BY count(*) desc;
+--We might want to use one of these links as a control
