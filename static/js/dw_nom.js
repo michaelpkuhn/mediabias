@@ -36,3 +36,40 @@ d3.json(json_ref).then((data) => {
 
     Plotly.newPlot("dw", data, layout)
 })
+
+json_ref = "../testtable.json"
+
+d3.json(json_ref).then((data) => {
+    
+    function createTrace(dict, d_name, d_color){
+        var trace = {
+            x: dict.map(d => d.nominate_dim1),
+            y: dict.map(d => d.nominate_dim2),
+            hovertext: dict.map(d=> "Website: "+d.site+'<br>'+"Count: "+d.count),
+            type: "scatter",
+            mode: 'markers',
+            marker: {color: d_color, size: dict.map(d=>d.count/100)},
+            name: d_name
+    
+        }
+        console.log(dict.map(d=>d.size))
+        return trace
+    }
+
+    media_trace = createTrace(data, 'Media', 'Green')
+
+    var data = [media_trace]
+
+    var layout = {
+        title: {
+            text: "DW NOMINATE Media"
+        },
+        yaxis: {title: "Inter-Party Differences Spectrum",
+                range: [-1,1]},
+        xaxis: {title: "Liberal-Conservative Spectrum",
+                range: [-1,1]},
+        hovermode:'closest'
+    }
+
+    Plotly.newPlot("media_dw", data, layout)
+})

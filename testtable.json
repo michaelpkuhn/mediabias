@@ -1,0 +1,602 @@
+[
+    {
+        "site": "www.washingtonpost.com",
+        "count": 9856,
+        "nominate_dim1": -0.305,
+        "nominate_dim2": -0.146
+    },
+    {
+        "site": "www.nytimes.com",
+        "count": 9073,
+        "nominate_dim1": -0.326,
+        "nominate_dim2": -0.164
+    },
+    {
+        "site": "www.youtube.com",
+        "count": 6648,
+        "nominate_dim1": 0.08,
+        "nominate_dim2": -0.056
+    },
+    {
+        "site": "www.facebook.com",
+        "count": 5558,
+        "nominate_dim1": -0.124,
+        "nominate_dim2": -0.102
+    },
+    {
+        "site": "thehill.com",
+        "count": 4295,
+        "nominate_dim1": -0.098,
+        "nominate_dim2": -0.09
+    },
+    {
+        "site": "www.politico.com",
+        "count": 3399,
+        "nominate_dim1": -0.176,
+        "nominate_dim2": -0.091
+    },
+    {
+        "site": "www.cnn.com",
+        "count": 3224,
+        "nominate_dim1": -0.293,
+        "nominate_dim2": -0.138
+    },
+    {
+        "site": "www.instagram.com",
+        "count": 2545,
+        "nominate_dim1": 0.237,
+        "nominate_dim2": -0.035
+    },
+    {
+        "site": "www.wsj.com",
+        "count": 2518,
+        "nominate_dim1": 0.29,
+        "nominate_dim2": -0.038
+    },
+    {
+        "site": "www.foxnews.com",
+        "count": 2095,
+        "nominate_dim1": 0.515,
+        "nominate_dim2": 0.051
+    },
+    {
+        "site": "www.vox.com",
+        "count": 2030,
+        "nominate_dim1": -0.434,
+        "nominate_dim2": -0.176
+    },
+    {
+        "site": "www.usatoday.com",
+        "count": 1947,
+        "nominate_dim1": -0.092,
+        "nominate_dim2": -0.094
+    },
+    {
+        "site": "nyti.ms",
+        "count": 1875,
+        "nominate_dim1": -0.326,
+        "nominate_dim2": -0.157
+    },
+    {
+        "site": "www.nbcnews.com",
+        "count": 1874,
+        "nominate_dim1": -0.324,
+        "nominate_dim2": -0.131
+    },
+    {
+        "site": "www.cnbc.com",
+        "count": 1806,
+        "nominate_dim1": 0.161,
+        "nominate_dim2": -0.005
+    },
+    {
+        "site": "wapo.st",
+        "count": 1751,
+        "nominate_dim1": -0.273,
+        "nominate_dim2": -0.139
+    },
+    {
+        "site": "www.washingtonexaminer.com",
+        "count": 1713,
+        "nominate_dim1": 0.484,
+        "nominate_dim2": -0.015
+    },
+    {
+        "site": "www.npr.org",
+        "count": 1712,
+        "nominate_dim1": -0.347,
+        "nominate_dim2": -0.129
+    },
+    {
+        "site": "medium.com",
+        "count": 1683,
+        "nominate_dim1": -0.274,
+        "nominate_dim2": -0.106
+    },
+    {
+        "site": "www.portman.senate.gov",
+        "count": 1659,
+        "nominate_dim1": 0.366,
+        "nominate_dim2": -0.233
+    },
+    {
+        "site": "apnews.com",
+        "count": 1536,
+        "nominate_dim1": 0.024,
+        "nominate_dim2": -0.009
+    },
+    {
+        "site": "www.bloomberg.com",
+        "count": 1297,
+        "nominate_dim1": -0.052,
+        "nominate_dim2": -0.077
+    },
+    {
+        "site": "www.rollcall.com",
+        "count": 1289,
+        "nominate_dim1": -0.057,
+        "nominate_dim2": -0.041
+    },
+    {
+        "site": "www.huffingtonpost.com",
+        "count": 1148,
+        "nominate_dim1": -0.426,
+        "nominate_dim2": -0.181
+    },
+    {
+        "site": "www.latimes.com",
+        "count": 1071,
+        "nominate_dim1": -0.373,
+        "nominate_dim2": -0.13
+    },
+    {
+        "site": "www.news-leader.com",
+        "count": 1014,
+        "nominate_dim1": 0.535,
+        "nominate_dim2": 0.24
+    },
+    {
+        "site": "www.cbsnews.com",
+        "count": 946,
+        "nominate_dim1": -0.208,
+        "nominate_dim2": -0.092
+    },
+    {
+        "site": "www.c-span.org",
+        "count": 889,
+        "nominate_dim1": -0.049,
+        "nominate_dim2": -0.08
+    },
+    {
+        "site": "www.reuters.com",
+        "count": 877,
+        "nominate_dim1": -0.036,
+        "nominate_dim2": -0.085
+    },
+    {
+        "site": "www.stripes.com",
+        "count": 850,
+        "nominate_dim1": 0.428,
+        "nominate_dim2": 0.183
+    },
+    {
+        "site": "www.axios.com",
+        "count": 766,
+        "nominate_dim1": -0.098,
+        "nominate_dim2": -0.09
+    },
+    {
+        "site": "dailycaller.com",
+        "count": 735,
+        "nominate_dim1": 0.574,
+        "nominate_dim2": 0.016
+    },
+    {
+        "site": "abcnews.go.com",
+        "count": 687,
+        "nominate_dim1": -0.228,
+        "nominate_dim2": -0.113
+    },
+    {
+        "site": "energycommerce.house.gov",
+        "count": 633,
+        "nominate_dim1": 0.341,
+        "nominate_dim2": 0.046
+    },
+    {
+        "site": "www.breitbart.com",
+        "count": 615,
+        "nominate_dim1": 0.627,
+        "nominate_dim2": -0.1
+    },
+    {
+        "site": "www.washingtontimes.com",
+        "count": 603,
+        "nominate_dim1": 0.473,
+        "nominate_dim2": 0.056
+    },
+    {
+        "site": "www.theguardian.com",
+        "count": 587,
+        "nominate_dim1": -0.4,
+        "nominate_dim2": -0.226
+    },
+    {
+        "site": "www.theatlantic.com",
+        "count": 577,
+        "nominate_dim1": -0.282,
+        "nominate_dim2": -0.153
+    },
+    {
+        "site": "secure.actblue.com",
+        "count": 534,
+        "nominate_dim1": -0.431,
+        "nominate_dim2": -0.161
+    },
+    {
+        "site": "www.chicagotribune.com",
+        "count": 522,
+        "nominate_dim1": -0.284,
+        "nominate_dim2": -0.108
+    },
+    {
+        "site": "time.com",
+        "count": 503,
+        "nominate_dim1": -0.318,
+        "nominate_dim2": -0.145
+    },
+    {
+        "site": "www.dallasnews.com",
+        "count": 492,
+        "nominate_dim1": 0.289,
+        "nominate_dim2": -0.03
+    },
+    {
+        "site": "snpy.tv",
+        "count": 489,
+        "nominate_dim1": -0.243,
+        "nominate_dim2": -0.128
+    },
+    {
+        "site": "www.startribune.com",
+        "count": 489,
+        "nominate_dim1": -0.264,
+        "nominate_dim2": -0.211
+    },
+    {
+        "site": "www.eventbrite.com",
+        "count": 479,
+        "nominate_dim1": -0.113,
+        "nominate_dim2": -0.079
+    },
+    {
+        "site": "www.nationalreview.com",
+        "count": 468,
+        "nominate_dim1": 0.545,
+        "nominate_dim2": -0.019
+    },
+    {
+        "site": "freebeacon.com",
+        "count": 462,
+        "nominate_dim1": 0.538,
+        "nominate_dim2": -0.015
+    },
+    {
+        "site": "www.thedailybeast.com",
+        "count": 460,
+        "nominate_dim1": -0.369,
+        "nominate_dim2": -0.185
+    },
+    {
+        "site": "gabbard.house.gov",
+        "count": 459,
+        "nominate_dim1": -0.275,
+        "nominate_dim2": -0.253
+    },
+    {
+        "site": "insider.foxnews.com",
+        "count": 454,
+        "nominate_dim1": 0.55,
+        "nominate_dim2": 0.065
+    },
+    {
+        "site": "www.apnews.com",
+        "count": 453,
+        "nominate_dim1": -0.049,
+        "nominate_dim2": -0.045
+    },
+    {
+        "site": "www.seattletimes.com",
+        "count": 443,
+        "nominate_dim1": -0.359,
+        "nominate_dim2": -0.203
+    },
+    {
+        "site": "nbcnews.trib.al",
+        "count": 426,
+        "nominate_dim1": -0.289,
+        "nominate_dim2": -0.086
+    },
+    {
+        "site": "www.msnbc.com",
+        "count": 421,
+        "nominate_dim1": -0.387,
+        "nominate_dim2": -0.14
+    },
+    {
+        "site": "www.gop.gov",
+        "count": 413,
+        "nominate_dim1": 0.443,
+        "nominate_dim2": 0.124
+    },
+    {
+        "site": "apple.news",
+        "count": 410,
+        "nominate_dim1": 0.098,
+        "nominate_dim2": -0.019
+    },
+    {
+        "site": "www.liveaction.org",
+        "count": 387,
+        "nominate_dim1": 0.55,
+        "nominate_dim2": 0.235
+    },
+    {
+        "site": "townhall.com",
+        "count": 385,
+        "nominate_dim1": 0.576,
+        "nominate_dim2": 0.101
+    },
+    {
+        "site": "video.foxnews.com",
+        "count": 384,
+        "nominate_dim1": 0.414,
+        "nominate_dim2": -0.036
+    },
+    {
+        "site": "www.whitehouse.gov",
+        "count": 382,
+        "nominate_dim1": 0.462,
+        "nominate_dim2": 0.027
+    },
+    {
+        "site": "www.newsweek.com",
+        "count": 382,
+        "nominate_dim1": -0.309,
+        "nominate_dim2": -0.158
+    },
+    {
+        "site": "www.forbes.com",
+        "count": 380,
+        "nominate_dim1": -0.013,
+        "nominate_dim2": -0.122
+    },
+    {
+        "site": "www.miamiherald.com",
+        "count": 373,
+        "nominate_dim1": -0.065,
+        "nominate_dim2": -0.042
+    },
+    {
+        "site": "www.bostonglobe.com",
+        "count": 372,
+        "nominate_dim1": -0.451,
+        "nominate_dim2": -0.257
+    },
+    {
+        "site": "www.stltoday.com",
+        "count": 368,
+        "nominate_dim1": -0.124,
+        "nominate_dim2": 0.025
+    },
+    {
+        "site": "www.wicker.senate.gov",
+        "count": 367,
+        "nominate_dim1": 0.373,
+        "nominate_dim2": 0.334
+    },
+    {
+        "site": "www.buzzfeed.com",
+        "count": 367,
+        "nominate_dim1": -0.336,
+        "nominate_dim2": -0.158
+    },
+    {
+        "site": "www.isakson.senate.gov",
+        "count": 361,
+        "nominate_dim1": 0.391,
+        "nominate_dim2": -0.013
+    },
+    {
+        "site": "www.foxbusiness.com",
+        "count": 360,
+        "nominate_dim1": 0.503,
+        "nominate_dim2": 0.066
+    },
+    {
+        "site": "www.cruz.senate.gov",
+        "count": 353,
+        "nominate_dim1": 0.795,
+        "nominate_dim2": -0.259
+    },
+    {
+        "site": "www.businessinsider.com",
+        "count": 352,
+        "nominate_dim1": -0.17,
+        "nominate_dim2": -0.091
+    },
+    {
+        "site": "www.congress.gov",
+        "count": 345,
+        "nominate_dim1": -0.001,
+        "nominate_dim2": -0.13
+    },
+    {
+        "site": "www.rubio.senate.gov",
+        "count": 344,
+        "nominate_dim1": 0.555,
+        "nominate_dim2": -0.26
+    },
+    {
+        "site": "fairandsimple.gop",
+        "count": 342,
+        "nominate_dim1": 0.487,
+        "nominate_dim2": 0.117
+    },
+    {
+        "site": "www.bizjournals.com",
+        "count": 337,
+        "nominate_dim1": 0.086,
+        "nominate_dim2": -0.053
+    },
+    {
+        "site": "maloney.house.gov",
+        "count": 335,
+        "nominate_dim1": -0.39,
+        "nominate_dim2": -0.269
+    },
+    {
+        "site": "www.feinstein.senate.gov",
+        "count": 332,
+        "nominate_dim1": -0.272,
+        "nominate_dim2": -0.188
+    },
+    {
+        "site": "www.omaha.com",
+        "count": 331,
+        "nominate_dim1": 0.396,
+        "nominate_dim2": -0.024
+    },
+    {
+        "site": "ohalleran.house.gov",
+        "count": 329,
+        "nominate_dim1": -0.186,
+        "nominate_dim2": 0.153
+    },
+    {
+        "site": "www.nydailynews.com",
+        "count": 329,
+        "nominate_dim1": -0.404,
+        "nominate_dim2": -0.212
+    },
+    {
+        "site": "stefanik.house.gov",
+        "count": 329,
+        "nominate_dim1": 0.214,
+        "nominate_dim2": 0.003
+    },
+    {
+        "site": "www.abqjournal.com",
+        "count": 323,
+        "nominate_dim1": -0.334,
+        "nominate_dim2": -0.027
+    },
+    {
+        "site": "thinkprogress.org",
+        "count": 320,
+        "nominate_dim1": -0.422,
+        "nominate_dim2": -0.201
+    },
+    {
+        "site": "maxinewatersforcongress.com",
+        "count": 319,
+        "nominate_dim1": -0.653,
+        "nominate_dim2": -0.072
+    },
+    {
+        "site": "www.nbcwashington.com",
+        "count": 317,
+        "nominate_dim1": 0.448,
+        "nominate_dim2": 0.201
+    },
+    {
+        "site": "www.capito.senate.gov",
+        "count": 317,
+        "nominate_dim1": 0.262,
+        "nominate_dim2": 0.058
+    },
+    {
+        "site": "cnn.it",
+        "count": 317,
+        "nominate_dim1": -0.277,
+        "nominate_dim2": -0.115
+    },
+    {
+        "site": "www.majorityleader.gov",
+        "count": 314,
+        "nominate_dim1": 0.081,
+        "nominate_dim2": 0.128
+    },
+    {
+        "site": "www.grassley.senate.gov",
+        "count": 310,
+        "nominate_dim1": 0.344,
+        "nominate_dim2": -0.067
+    },
+    {
+        "site": "politi.co",
+        "count": 309,
+        "nominate_dim1": -0.185,
+        "nominate_dim2": -0.124
+    },
+    {
+        "site": "www.tampabay.com",
+        "count": 303,
+        "nominate_dim1": -0.12,
+        "nominate_dim2": -0.06
+    },
+    {
+        "site": "www.detroitnews.com",
+        "count": 301,
+        "nominate_dim1": -0.053,
+        "nominate_dim2": -0.12
+    },
+    {
+        "site": "cards.twitter.com",
+        "count": 300,
+        "nominate_dim1": 0.323,
+        "nominate_dim2": 0.177
+    },
+    {
+        "site": "www.motherjones.com",
+        "count": 300,
+        "nominate_dim1": -0.465,
+        "nominate_dim2": -0.195
+    },
+    {
+        "site": "www.azcentral.com",
+        "count": 295,
+        "nominate_dim1": 0.071,
+        "nominate_dim2": -0.124
+    },
+    {
+        "site": "www.blunt.senate.gov",
+        "count": 288,
+        "nominate_dim1": 0.42,
+        "nominate_dim2": 0.275
+    },
+    {
+        "site": "money.cnn.com",
+        "count": 287,
+        "nominate_dim1": -0.09,
+        "nominate_dim2": -0.042
+    },
+    {
+        "site": "www.murkowski.senate.gov",
+        "count": 286,
+        "nominate_dim1": 0.188,
+        "nominate_dim2": -0.275
+    },
+    {
+        "site": "www.snappytv.com",
+        "count": 282,
+        "nominate_dim1": -0.3,
+        "nominate_dim2": -0.142
+    },
+    {
+        "site": "nypost.com",
+        "count": 281,
+        "nominate_dim1": 0.234,
+        "nominate_dim2": 0.014
+    }
+]

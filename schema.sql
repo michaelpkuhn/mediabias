@@ -41,10 +41,10 @@ select * from member_accounts where mem_type='member'
 --Panda manipulation
 CREATE TABLE accounts (
 	account_id BIGINT PRIMARY KEY,
+	bioguide_id VARCHAR(30),
 	mem_name VARCHAR(255),
 	screen_name VARCHAR(255)	
 )
-
 
 select twitter_table.tweet_id, accounts.account_id, twitter_table.screen_name, 
 accounts.mem_name,twitter_table.twt_time, twitter_table.url, twitter_table.twt_txt, 
@@ -69,3 +69,53 @@ and domain_name != 'www.pscp.tv' and domain_name != 'fb.me' and domain_name != '
 GROUP BY domain_name
 ORDER BY count(*) desc;
 --We might want to use one of these links as a control
+
+CREATE TABLE members (
+	table_id SERIAL PRIMARY KEY,
+	congress INTEGER,
+	chamber VARCHAR(30),
+	icpsr INTEGER,
+	state_icpsr INTEGER,
+	district_code INTEGER,
+	state_abbr VARCHAR(3),
+	party_code INTEGER,
+	occupancy VARCHAR(255),
+	last_means VARCHAR(255),
+	bioname VARCHAR(255),
+	bioguide_id VARCHAR(30),
+	born INTEGER,
+	diet INTEGER,
+	nominate_dim1 DECIMAL,
+	nominate_dim2 DECIMAL,
+	nominate_log_likelihood DECIMAL,
+	nominate_geo_mean_probability DECIMAL,
+	nominate_number_of_vote VARCHAR(10),
+	nominate_number_of_error VARCHAR(10),
+	conditional VARCHAR(255),
+	nokken_poole_dim1 DECIMAL,
+	nokken_poole_dim2 DECIMAL
+)
+
+select final_table.bioguide_id, final_table.domain_name, 
+members.party_code,members.bioname,members.nominate_dim1, 
+members.nominate_dim2,members.nominate_log_likelihood,
+members.nominate_geo_mean_probability, members.nominate_number_of_vote,
+members.nominate_number_of_error, members.nokken_poole_dim1,
+members.nokken_poole_dim2
+INTO analysis_table
+from final_table, members
+where final_table.bioguide_id = members.bioguide_id and
+domain_name != 't.co' and domain_name != 'pbs.twimg.com' and domain_name != 'video.twimg.com' and domain_name != 'twitter.com'
+and domain_name != 'bit.ly' and domain_name != 'trib.al' and domain_name != 'goo.gl' and domain_name != 'youtu.be'
+and domain_name != 'www.pscp.tv' and domain_name != 'fb.me' and domain_name != 'ow.ly' and domain_name != 'www.google.com'
+
+select domain_name, count(domain_name), round(avg(nominate_dim1),3) AS nominate_dim1, round(avg(nominate_dim2),3) AS nominate_dim2
+INTO test_table
+from analysis_table
+group by domain_name
+order by count(domain_name) desc,
+LIMIT 100
+
+select round(avg(nominate_dim1),3) AS nominate_dim1, round(avg(nominate_dim2),3) AS nominate_dim2
+from analysis_table
+LIMIT 100
