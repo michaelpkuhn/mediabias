@@ -119,3 +119,65 @@ LIMIT 100
 select round(avg(nominate_dim1),3) AS nominate_dim1, round(avg(nominate_dim2),3) AS nominate_dim2
 from analysis_table
 LIMIT 100
+
+
+select domain_name, count(domain_name), round(avg(nominate_dim1),3) AS nominate_dim1, round(avg(nominate_dim2),3) AS nominate_dim2
+INTO test_table
+from analysis_table
+group by domain_name
+order by count(domain_name) desc,
+LIMIT 100
+
+Select bioname, count(bioname), domain_name, count(domain_name), nominate_dim1, nominate_dim2 
+--INTO proportion_test_table
+FROM analysis_table 
+WHERE domain_name = 'www.nytimes.com' or domain_name = 'www.foxnews.com'
+GROUP BY bioname, domain_name, nominate_dim1, nominate_dim2
+order by bioname
+
+Select bioname, domain_name, nominate_dim1, nominate_dim2, total
+INTO total_table
+FROM analysis_table 
+join
+(SELECT bioname as name2, count(bioname) as total from analysis_table 
+GROUP BY bioname) AS total_count ON analysis_table.bioname=total_count.name2
+
+
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'nyti.ms', 'www.nytimes.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'wapo.st', 'www.washingtonpost.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'insider.foxnews.com', 'www.foxnews.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'apnews.com', 'www.apnews.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'nbcnews.trib.al', 'www.nbcnews.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'video.foxnews.com', 'www.foxnews.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'cnn.it', 'www.cnn.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'politi.co', 'www.politico.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'www.buzzfeednews.com', 'www.buzzfeed.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'apne.ws', 'www.apnews.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'usat.ly', 'www.usatoday.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'fxn.ws', 'www.foxnews.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'mobile.nytimes.com', 'www.nytimes.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'video.foxbusiness.com', 'www.foxbusiness.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'www.huffpost.com', 'www.huffingtonpost.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'n.pr', 'www.npr.org')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'on.wsj.com', 'www.wsj.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'm.huffpost.com', 'www.huffingtonpost.com')
+UPDATE total_table
+SET domain_name = REPLACE(domain_name, 'reut.rs', 'www.reuters.com')

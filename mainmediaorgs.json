@@ -1,0 +1,224 @@
+[
+    {
+        "site": "thinkprogress.org",
+        "nominate_dim1": -0.422,
+        "nominate_dim2": -0.201,
+        "total": 320
+    },
+    {
+        "site": "www.msnbc.com",
+        "nominate_dim1": -0.387,
+        "nominate_dim2": -0.14,
+        "total": 421
+    },
+    {
+        "site": "www.bloomberg.com",
+        "nominate_dim1": -0.052,
+        "nominate_dim2": -0.077,
+        "total": 1297
+    },
+    {
+        "site": "slate.com",
+        "nominate_dim1": -0.421,
+        "nominate_dim2": -0.242,
+        "total": 181
+    },
+    {
+        "site": "reason.com",
+        "nominate_dim1": 0.535,
+        "nominate_dim2": -0.725,
+        "total": 220
+    },
+    {
+        "site": "thehill.com",
+        "nominate_dim1": -0.098,
+        "nominate_dim2": -0.09,
+        "total": 4295
+    },
+    {
+        "site": "www.washingtonpost.com",
+        "nominate_dim1": -0.3,
+        "nominate_dim2": -0.145,
+        "total": 11607
+    },
+    {
+        "site": "www.foxnews.com",
+        "nominate_dim1": 0.509,
+        "nominate_dim2": 0.041,
+        "total": 3171
+    },
+    {
+        "site": "www.politico.com",
+        "nominate_dim1": -0.177,
+        "nominate_dim2": -0.094,
+        "total": 3708
+    },
+    {
+        "site": "apple.news",
+        "nominate_dim1": 0.098,
+        "nominate_dim2": -0.019,
+        "total": 410
+    },
+    {
+        "site": "www.buzzfeed.com",
+        "nominate_dim1": -0.359,
+        "nominate_dim2": -0.167,
+        "total": 645
+    },
+    {
+        "site": "www.reuters.com",
+        "nominate_dim1": 0.027,
+        "nominate_dim2": -0.05,
+        "total": 1099
+    },
+    {
+        "site": "www.apnews.com",
+        "nominate_dim1": 0.005,
+        "nominate_dim2": -0.015,
+        "total": 1811
+    },
+    {
+        "site": "www.dailywire.com",
+        "nominate_dim1": 0.605,
+        "nominate_dim2": -0.026,
+        "total": 169
+    },
+    {
+        "site": "www.vox.com",
+        "nominate_dim1": -0.434,
+        "nominate_dim2": -0.176,
+        "total": 2030
+    },
+    {
+        "site": "freebeacon.com",
+        "nominate_dim1": 0.538,
+        "nominate_dim2": -0.015,
+        "total": 462
+    },
+    {
+        "site": "www.wsj.com",
+        "nominate_dim1": 0.284,
+        "nominate_dim2": -0.033,
+        "total": 2680
+    },
+    {
+        "site": "www.nytimes.com",
+        "nominate_dim1": -0.325,
+        "nominate_dim2": -0.163,
+        "total": 11140
+    },
+    {
+        "site": "www.conservativereview.com",
+        "nominate_dim1": 0.691,
+        "nominate_dim2": -0.246,
+        "total": 132
+    },
+    {
+        "site": "www.usatoday.com",
+        "nominate_dim1": -0.097,
+        "nominate_dim2": -0.09,
+        "total": 2189
+    },
+    {
+        "site": "www.breitbart.com",
+        "nominate_dim1": 0.627,
+        "nominate_dim2": -0.1,
+        "total": 615
+    },
+    {
+        "site": "www.nydailynews.com",
+        "nominate_dim1": -0.404,
+        "nominate_dim2": -0.212,
+        "total": 329
+    },
+    {
+        "site": "theintercept.com",
+        "nominate_dim1": -0.454,
+        "nominate_dim2": -0.284,
+        "total": 216
+    },
+    {
+        "site": "www.foxbusiness.com",
+        "nominate_dim1": 0.481,
+        "nominate_dim2": 0.041,
+        "total": 551
+    },
+    {
+        "site": "www.pbs.org",
+        "nominate_dim1": -0.312,
+        "nominate_dim2": -0.155,
+        "total": 262
+    },
+    {
+        "site": "www.washingtonexaminer.com",
+        "nominate_dim1": 0.484,
+        "nominate_dim2": -0.015,
+        "total": 1713
+    },
+    {
+        "site": "www.motherjones.com",
+        "nominate_dim1": -0.465,
+        "nominate_dim2": -0.195,
+        "total": 300
+    },
+    {
+        "site": "www.chicagotribune.com",
+        "nominate_dim1": -0.284,
+        "nominate_dim2": -0.108,
+        "total": 522
+    },
+    {
+        "site": "www.axios.com",
+        "nominate_dim1": -0.098,
+        "nominate_dim2": -0.09,
+        "total": 766
+    },
+    {
+        "site": "www.nbcnews.com",
+        "nominate_dim1": -0.317,
+        "nominate_dim2": -0.123,
+        "total": 2300
+    },
+    {
+        "site": "thefederalist.com",
+        "nominate_dim1": 0.578,
+        "nominate_dim2": 0.018,
+        "total": 251
+    },
+    {
+        "site": "www.cnn.com",
+        "nominate_dim1": -0.292,
+        "nominate_dim2": -0.136,
+        "total": 3541
+    },
+    {
+        "site": "www.npr.org",
+        "nominate_dim1": -0.345,
+        "nominate_dim2": -0.128,
+        "total": 1890
+    },
+    {
+        "site": "www.nationalreview.com",
+        "nominate_dim1": 0.545,
+        "nominate_dim2": -0.019,
+        "total": 468
+    },
+    {
+        "site": "www.newyorker.com",
+        "nominate_dim1": -0.36,
+        "nominate_dim2": -0.179,
+        "total": 270
+    },
+    {
+        "site": "nypost.com",
+        "nominate_dim1": 0.234,
+        "nominate_dim2": 0.014,
+        "total": 281
+    },
+    {
+        "site": "www.huffingtonpost.com",
+        "nominate_dim1": -0.424,
+        "nominate_dim2": -0.189,
+        "total": 1485
+    }
+]
