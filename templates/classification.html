@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Media Bias</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/css/Index_Style.css">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Media Bias</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="classification.html">Classifications<span class="sr-only">(current)</span></a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sitemap">Site Map</a></li>            </ul>
+        </div>
+    </nav>
+
+    <img src='../images/5class.png'>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>Site</th>
+      <th>nominate_dim1</th>
+      <th>nominate_dim2</th>
+      <th>count</th>
+      <th>Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>www.motherjones.com</td>
+      <td>-0.465</td>
+      <td>-0.195</td>
+      <td>300</td>
+      <td>Left</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>theintercept.com</td>
+      <td>-0.454</td>
+      <td>-0.284</td>
+      <td>216</td>
+      <td>Left</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>www.vox.com</td>
+      <td>-0.434</td>
+      <td>-0.176</td>
+      <td>2030</td>
+      <td>Left</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>www.huffingtonpost.com</td>
+      <td>-0.424</td>
+      <td>-0.189</td>
+      <td>1485</td>
+      <td>Left</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>thinkprogress.org</td>
+      <td>-0.422</td>
+      <td>-0.201</td>
+      <td>320</td>
+      <td>Left</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>slate.com</td>
+      <td>-0.421</td>
+      <td>-0.242</td>
+      <td>181</td>
+      <td>Left</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>www.nydailynews.com</td>
+      <td>-0.404</td>
+      <td>-0.212</td>
+      <td>329</td>
+      <td>Left</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>www.msnbc.com</td>
+      <td>-0.387</td>
+      <td>-0.140</td>
+      <td>421</td>
+      <td>Left-Leaning</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8</td>
+      <td>www.newyorker.com</td>
+      <td>-0.360</td>
+      <td>-0.179</td>
+      <td>270</td>
+      <td>Left-Leaning</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>www.buzzfeed.com</td>
+      <td>-0.359</td>
+      <td>-0.167</td>
+      <td>645</td>
+      <td>Left-Leaning</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10</td>
+      <td>www.npr.org</td>
+      <td>-0.345</td>
+      <td>-0.128</td>
+      <td>1890</td>
+      <td>Left-Leaning</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>11</td>
+      <td>www.nytimes.com</td>
+      <td>-0.325</td>
+      <td>-0.163</td>
+      <td>11140</td>
+      <td>Left-Leaning</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>12</td>
+      <td>www.nbcnews.com</td>
+      <td>-0.317</td>
+      <td>-0.123</td>
+      <td>2300</td>
+      <td>Left-Leaning</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>13</td>
+      <td>www.pbs.org</td>
+      <td>-0.312</td>
+      <td>-0.155</td>
+      <td>262</td>
+      <td>Left-Leaning</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>14</td>
+      <td>www.washingtonpost.com</td>
+      <td>-0.300</td>
+      <td>-0.145</td>
+      <td>11607</td>
+      <td>Left-Leaning</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>15</td>
+      <td>www.cnn.com</td>
+      <td>-0.292</td>
+      <td>-0.136</td>
+      <td>3541</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>16</td>
+      <td>www.chicagotribune.com</td>
+      <td>-0.284</td>
+      <td>-0.108</td>
+      <td>522</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>17</td>
+      <td>www.politico.com</td>
+      <td>-0.177</td>
+      <td>-0.094</td>
+      <td>3708</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>18</td>
+      <td>www.axios.com</td>
+      <td>-0.098</td>
+      <td>-0.090</td>
+      <td>766</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>19</td>
+      <td>thehill.com</td>
+      <td>-0.098</td>
+      <td>-0.090</td>
+      <td>4295</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>20</td>
+      <td>www.usatoday.com</td>
+      <td>-0.097</td>
+      <td>-0.090</td>
+      <td>2189</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>21</td>
+      <td>www.bloomberg.com</td>
+      <td>-0.052</td>
+      <td>-0.077</td>
+      <td>1297</td>
+      <td>Moderate</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>22</td>
+      <td>www.apnews.com</td>
+      <td>0.005</td>
+      <td>-0.015</td>
+      <td>1811</td>
+      <td>Right-Leaning</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>23</td>
+      <td>www.reuters.com</td>
+      <td>0.027</td>
+      <td>-0.050</td>
+      <td>1099</td>
+      <td>Right-Leaning</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>24</td>
+      <td>apple.news</td>
+      <td>0.098</td>
+      <td>-0.019</td>
+      <td>410</td>
+      <td>Right-Leaning</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>25</td>
+      <td>nypost.com</td>
+      <td>0.234</td>
+      <td>0.014</td>
+      <td>281</td>
+      <td>Right-Leaning</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>26</td>
+      <td>www.wsj.com</td>
+      <td>0.284</td>
+      <td>-0.033</td>
+      <td>2680</td>
+      <td>Right-Leaning</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>27</td>
+      <td>www.foxbusiness.com</td>
+      <td>0.481</td>
+      <td>0.041</td>
+      <td>551</td>
+      <td>Right-Leaning</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>28</td>
+      <td>www.washingtonexaminer.com</td>
+      <td>0.484</td>
+      <td>-0.015</td>
+      <td>1713</td>
+      <td>Right-Leaning</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>29</td>
+      <td>www.foxnews.com</td>
+      <td>0.509</td>
+      <td>0.041</td>
+      <td>3171</td>
+      <td>Right-Leaning</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>30</td>
+      <td>reason.com</td>
+      <td>0.535</td>
+      <td>-0.725</td>
+      <td>220</td>
+      <td>Right</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>31</td>
+      <td>freebeacon.com</td>
+      <td>0.538</td>
+      <td>-0.015</td>
+      <td>462</td>
+      <td>Right</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>32</td>
+      <td>www.nationalreview.com</td>
+      <td>0.545</td>
+      <td>-0.019</td>
+      <td>468</td>
+      <td>Right</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>33</td>
+      <td>thefederalist.com</td>
+      <td>0.578</td>
+      <td>0.018</td>
+      <td>251</td>
+      <td>Right</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>34</td>
+      <td>www.dailywire.com</td>
+      <td>0.605</td>
+      <td>-0.026</td>
+      <td>169</td>
+      <td>Right</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>35</td>
+      <td>www.breitbart.com</td>
+      <td>0.627</td>
+      <td>-0.100</td>
+      <td>615</td>
+      <td>Right</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>36</td>
+      <td>www.conservativereview.com</td>
+      <td>0.691</td>
+      <td>-0.246</td>
+      <td>132</td>
+      <td>Right</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+
+<footer>
+  <p class="copyright">
+      &copy; Copyright Coding Bootcamp 2020
+  </p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js"></script>
+<!-- <script src = "data/comm_dist.json"></script>
+<script src = "data/avg_hr_rides.json"></script>
+<script src = "data/trip_count.json"></script> -->
+<script src="static/js/dw_nom.js"></script>
+<script src="../static/js/dw_nom.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>

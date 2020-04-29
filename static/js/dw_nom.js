@@ -1,6 +1,10 @@
 json_ref = "../HS116_members.json"
 
 d3.json(json_ref).then((data) => {
+    var plot_width = 750;
+    var plot_height = 750;
+    var margin_l = 100;
+    var margin_r = 100;
     dem = data.filter(d => d.party_code === 100);
     gop = data.filter(d => d.party_code === 200);
     ind = data.filter(d => d.party_code != 100 && d.party_code != 200)
@@ -26,6 +30,9 @@ d3.json(json_ref).then((data) => {
     var data = [dem_trace, gop_trace, ind_trace]
 
     var layout = {
+        width: plot_width,
+        height: plot_height,
+        margin: {l: margin_l, r: margin_r},
         title: {
             text: "DW NOMINATE 116th Congress"
         },
@@ -37,10 +44,13 @@ d3.json(json_ref).then((data) => {
     Plotly.newPlot("dw", data, layout)
 })
 
-json_ref = "../testtable.json"
+/* json_ref = "../testtable.json"
 
 d3.json(json_ref).then((data) => {
-    
+    var plot_width = 750;
+    var plot_height = 750;
+    var margin_l = 100;
+    var margin_r = 100;
     function createTrace(dict, d_name, d_color){
         var trace = {
             x: dict.map(d => d.nominate_dim1),
@@ -61,6 +71,9 @@ d3.json(json_ref).then((data) => {
     var data = [media_trace]
 
     var layout = {
+        width: plot_width,
+        height: plot_height,
+        margin: {l: margin_l, r: margin_r},
         title: {
             text: "DW NOMINATE Media"
         },
@@ -73,15 +86,15 @@ d3.json(json_ref).then((data) => {
 
     Plotly.newPlot("media_dw", data, layout)
 })
-
+ */
 
 json_ref = "../mainmediaorgs2.json"
 
 
 
 d3.json(json_ref).then((data) => {
-    var plot_width = 1000;
-    var plot_height = 1000;
+    var plot_width = 750;
+    var plot_height = 750;
     var margin_l = 100;
     var margin_r = 100;
     marker_size = data.map(d=> d.dim1_stderr*1.4); // x-axis units
@@ -129,7 +142,8 @@ d3.json(json_ref).then((data) => {
                     range: [-1,1]},
             xaxis: {title: "Liberal-Conservative Spectrum",
                     range: [-1,1]},
-            hovermode:'closest'
+            hovermode:'closest',
+            legend: {x: .75, y:1}
         };
 
     Plotly.newPlot("media_dw_focused", traces, layout)
@@ -159,9 +173,9 @@ d3.json(json_ref).then((data) => {
                 margin_l - margin_r)/(xaxis_stop-xaxis_start))
             //update.push(u)
         };
-      console.log(upd =update)
+      //console.log(upd =update)
       Plotly.restyle("media_dw_focused", "marker.size", [update], [0]);
-      console.log(error_trace.marker.size)
+      //console.log(error_trace.marker.size)
 
     });
 })
