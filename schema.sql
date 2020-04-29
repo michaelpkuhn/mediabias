@@ -181,3 +181,16 @@ UPDATE total_table
 SET domain_name = REPLACE(domain_name, 'm.huffpost.com', 'www.huffingtonpost.com')
 UPDATE total_table
 SET domain_name = REPLACE(domain_name, 'reut.rs', 'www.reuters.com')
+
+SELECT * into filtered_table FROM total_table 
+WHERE domain_name in ('www.washingtonpost.com', 'www.nytimes.com', 'thehill.com', 'www.politico.com', 'www.cnn.com',
+'www.wsj.com', 'www.foxnews.com', 'www.vox.com', 'www.usatoday.com', 'www.nbcnews.com', 'www.washingtonexaminer.com',
+'www.npr.org', 'www.apnews.com', 'www.bloomberg.com', 'www.huffingtonpost.com', 'www.axios.com', 'www.breitbart.com',
+'www.chicagotribune.com', 'www.nationalreview.com', 'freebeacon.com', 'www.msnbc.com','apple.news','www.newsweek.com'
+'www.forbes.com', 'www.buzzfeed.com', 'www.foxbusiness.com', 'www.nydailynews.com', 'thinkprogress.org', 'www.motherjones.com',
+'nypost.com', 'www.newyorker.com', 'www.pbs.org', 'thefederalist.com', 'reason.com', 'theintercept.com', 'slate.com',
+'www.dailywire.com', 'www.conservativereview.com', 'www.reuters.com')
+
+select domain_name, round(avg(nominate_dim1),3) AS nominate_dim1, round(avg(nominate_dim2),3) AS nominate_dim2, total
+from filtered_table
+GROUP BY domain_name, total
