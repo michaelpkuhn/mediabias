@@ -88,7 +88,7 @@ d3.json(json_ref).then((data) => {
 })
  */
 
-json_ref = "../mainmediaorgs2.json"
+json_ref = "../mainmediaorgs3.json"
 
 
 
@@ -107,13 +107,12 @@ d3.json(json_ref).then((data) => {
             x: dict.map(d => d.nominate_dim1),
             //y: dict.map(d => 0),
             y: dict.map(d => d.nominate_dim2),
-            hovertext: dict.map(d=> "Website: "+d.site+'<br>'+"Count: "+d.total
-            + "<br>" + "Dim1 Standard Error: " + d.dim1_stderr),
+            hovertext: dict.map(d=> "Website: "+d.Site+'<br>'+"Count: "+d.cotal
+            + "<br>" + "Dim1 Standard Error: " + d.std_err),
             type: "scatter",
             mode: 'markers',
             marker: {color: d_color},//, size: dict.map(d=>d.total/100)},
             name: d_name
-    
         }
         //console.log(dict.map(d=>d.size))
         return trace
