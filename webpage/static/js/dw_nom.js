@@ -1,5 +1,5 @@
 //116th Congress
-json_ref = "../HS116_members.json"
+json_ref = "static/js/data/HS116_members.json"
 
 d3.json(json_ref).then((data) => {
     var plot_width = 750;
@@ -92,9 +92,12 @@ d3.json(json_ref).then((data) => {
 })
  */
 
-json_ref = "../mainmediaorgs3.json"
+json_ref = "static/js/data/mainmediaorgs3.json"
 
-
+function deep_copy(v1){
+    v2 = JSON.parse(JSON.stringify(v1))
+    return v2
+}
 
 d3.json(json_ref).then((data) => {
     var plot_width = 750;
@@ -134,13 +137,13 @@ d3.json(json_ref).then((data) => {
         //ADJUSTED FOR NEUTRAL TWITTER BIAS
         let twt_bias = {x: 0.104, y: 0.133}
 
-        adj_trace = JSON.parse(JSON.stringify(media_trace))
+        adj_trace = deep_copy(media_trace)
 
         adj_trace.x = adj_trace.x.map(s => s+twt_bias.x)
         adj_trace.y = adj_trace.y.map(s => s+twt_bias.y)
         adj_trace.visible = false
 
-        adj_error = JSON.parse(JSON.stringify(error_trace))
+        adj_error = deep_copy(error_trace)
         adj_error.x = adj_error.x.map(s => s+twt_bias.x)
         adj_error.y = adj_error.y.map(s => s+twt_bias.y)
 
@@ -154,7 +157,7 @@ d3.json(json_ref).then((data) => {
         dem_trace.visible = false
         
         dem_marker_size = data.map(d=> d.dem_err*1.4);
-        dem_error = JSON.parse(JSON.stringify(dem_trace))
+        dem_error = deep_copy(dem_trace)
         dem_error.marker.color = 'light blue'
         dem_error.name = 'Democrat Standard Error'
         dem_error.marker.size = dem_marker_size.map(s=>s*(plot_width-
@@ -167,7 +170,7 @@ d3.json(json_ref).then((data) => {
         gop_trace.visible = false
         
         gop_marker_size = data.map(d=> d.dem_err*1.4);
-        gop_error = JSON.parse(JSON.stringify(gop_trace))
+        gop_error = deep_copy(gop_trace)
         gop_error.marker.color = 'light blue'
         gop_error.name = 'Republican Standard Error'
         gop_error.marker.size = gop_marker_size.map(s=>s*(plot_width-
@@ -177,6 +180,28 @@ d3.json(json_ref).then((data) => {
         //TRACES
         var traces = [error_trace, media_trace, adj_error,adj_trace,
                         dem_error, dem_trace, gop_error, gop_trace]
+
+        
+        var def_annotation = [{
+            xref: 'paper',
+            yref: 'paper',
+            x: -0.2,
+            xanchor: 'right',
+            y: .5,
+            yanchor: 'bottom',
+            text: 'Standard view',
+            showarrow: false
+        }]
+
+        let control_annotation = deep_copy(def_annotation)
+        control_annotation[0].text = 'Controlled for Twitter'
+
+        let dem_annotation = deep_copy(def_annotation)
+        dem_annotation[0].text = 'Democrat Filter'
+        
+        let gop_annotation = deep_copy(def_annotation)
+        gop_annotation[0].text = 'Republican Filter'
+
 
         var layout = {
             width: plot_width,
@@ -195,31 +220,50 @@ d3.json(json_ref).then((data) => {
                 y: 0.8,
                 yanchor: 'top',
                 buttons: [{
-                    method: 'restyle',
-                    args: ['visible', [true, true, false, false, false, false,
-                                        false, false]],
+                    method: 'update',
+                    args: [{'visible': [true, true, false, false, false, false,
+                                        false, false]},
+                            {'annotations': def_annotation}
+                                    ],
                     label: 'Overall'
                 },
                 {
-                    method: 'restyle',
-                    args: ['visible', [false, false, true, true, false, false,
-                                        false, false]],
+                    method: 'update',
+                    args: [{'visible': [false, false, true, true, false, false,
+                                        false, false]},
+                            {'annotations': gop_annotation}
+                                    ],
                     label: 'Neutral Control'
                 },
                 {
-                    method: 'restyle',
-                    args: ['visible', [false, false, false, false, true, true,
-                                        false, false]],
+                    method: 'update',
+                    args: [{'visible': [false, false, false, false, true, true,
+                                        false, false]},
+                            {'annotatoins': dem_annotation}
+                                    ],
                     label: 'Democrats-Only'
                 },
                 {
-                    method: 'restyle',
-                    args: ['visible', [false, false,false,false,false,false,
-                                        true, true]],
+                    method: 'update',
+                    args: [{'visible': [false, false,false,false,false,false,
+                                        true, true]},
+                            {'annotations': gop_annotation}
+                                    ],
                     label: 'Republicans-Only'
                 }
             ]
-            }]
+            }],
+            annotations: def_annotation
+            // annotations: [{
+            //     xref: 'paper',
+            //     yref: 'paper',
+            //     x: -0.2,
+            //     xanchor: 'right',
+            //     y: .5,
+            //     yanchor: 'bottom',
+            //     text: 'Standard view',
+            //     showarrow: false
+            // }]
         };
 
     Plotly.newPlot("media_dw_focused", traces, layout)
