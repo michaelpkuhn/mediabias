@@ -194,3 +194,13 @@ WHERE domain_name in ('www.washingtonpost.com', 'www.nytimes.com', 'thehill.com'
 select domain_name, round(avg(nominate_dim1),3) AS nominate_dim1, round(avg(nominate_dim2),3) AS nominate_dim2, total
 from filtered_table
 GROUP BY domain_name, total
+
+
+select accounts.account_id, accounts.bioguide_id, accounts.mem_name, accounts.screen_name, members.chamber, members.state_abbr, members.party_code
+into partycode_table
+from accounts, members
+where accounts.bioguide_id = members.bioguide_id
+
+select domain_name, round(avg(nominate_dim1),3) AS nominate_dim1, 
+round(avg(nominate_dim2),3) AS nominate_dim2, count(domain_name) 
+from dem_table GROUP BY domain_name
