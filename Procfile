@@ -1,1 +1,1 @@
-web: gunicorn project2_heroku.app:app
+web: gunicorn webpage.app:app
