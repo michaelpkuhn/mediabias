@@ -17,6 +17,10 @@ def ranking():
 def classify():
     return render_template('classification.html')
 
+@app.route('/methodology')
+def method():
+    return render_template('Methodology.html')
+
 @app.route('/sitemap')
 def sitemap():
     home_page = '/'
@@ -27,6 +31,7 @@ def sitemap():
         f"<a href={home_page}>Home</a><br/>"
         f"<a href={classify_page}>{classify_page}</a><br/>"
         f"<a href={ranking_page}>{ranking_page}</a><br/>"
+        f"<a href={method_page}>{method_page}</a><br/>"
         )
 
 
