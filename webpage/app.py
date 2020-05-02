@@ -9,6 +9,10 @@ app.config['DEBUG']= True
 def home():
     return render_template('index.html')
 
+@app.route('/ranking')
+def ranking():
+    return render_template('ranking.html')
+
 @app.route('/classification')
 def classify():
     return render_template('classification.html')
@@ -17,10 +21,12 @@ def classify():
 def sitemap():
     home_page = '/'
     classify_page = '/classification'
+    ranking_page = '/ranking'
     return(
         f"Available Routes:<br/>"
         f"<a href={home_page}>Home</a><br/>"
         f"<a href={classify_page}>{classify_page}</a><br/>"
+        f"<a href={ranking_page}>{ranking_page}</a><br/>"
         )
 
 

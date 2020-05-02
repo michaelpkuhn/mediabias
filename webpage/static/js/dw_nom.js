@@ -100,9 +100,9 @@ function deep_copy(v1){
 }
 
 d3.json(json_ref).then((data) => {
-    var plot_width = 750;
+    var plot_width = 750+150;
     var plot_height = 750;
-    var margin_l = 100;
+    var margin_l = 250;
     var margin_r = 100;
     marker_size = data.map(d=> d.std_err*1.4); // x-axis units
     xaxis_start = -1;
@@ -185,16 +185,22 @@ d3.json(json_ref).then((data) => {
         var def_annotation = [{
             xref: 'paper',
             yref: 'paper',
-            x: -0.2,
-            xanchor: 'right',
-            y: .5,
-            yanchor: 'bottom',
-            text: 'Standard view',
-            showarrow: false
+            x: -0.375,
+            xanchor: 'left',
+            y: .7,
+            yanchor: 'top',
+            text: 'The default view',
+            showarrow: false,
+            width: 150,
+            align: 'left'
         }]
 
         let control_annotation = deep_copy(def_annotation)
-        control_annotation[0].text = 'Controlled for Twitter'
+        control_annotation[0].text = 'Plot controlled for<br>' 
+        +'calculated bias of<br>' 
+        +'neutral link:<br>'
+        + 'Twitter.com<br>' 
+        +'dim1: 0.104<br>'+ 'dim2: 0.133<br>'
 
         let dem_annotation = deep_copy(def_annotation)
         dem_annotation[0].text = 'Democrat Filter'
@@ -215,8 +221,9 @@ d3.json(json_ref).then((data) => {
             xaxis: {title: "Liberal-Conservative Spectrum",
                     range: [-1,1]},
             hovermode:'closest',
-            legend: {x: .75, y:1},
+            legend: {x: -0.4, y:1},
             updatemenus: [{
+                x: -0.1,
                 y: 0.8,
                 yanchor: 'top',
                 buttons: [{
@@ -231,7 +238,7 @@ d3.json(json_ref).then((data) => {
                     method: 'update',
                     args: [{'visible': [false, false, true, true, false, false,
                                         false, false]},
-                            {'annotations': gop_annotation}
+                            {'annotations': control_annotation}
                                     ],
                     label: 'Neutral Control'
                 },
@@ -239,7 +246,7 @@ d3.json(json_ref).then((data) => {
                     method: 'update',
                     args: [{'visible': [false, false, false, false, true, true,
                                         false, false]},
-                            {'annotatoins': dem_annotation}
+                            {'annotations': dem_annotation}
                                     ],
                     label: 'Democrats-Only'
                 },
