@@ -167,13 +167,13 @@ d3.json(json_ref).then((data) => {
 
 
         var frames=[
-            {name:'Overall', data: [error_trace,media_trace],
+            {name:'Media', data: [{x: media_trace.x, y: media_trace.y}, {x: error_trace.x, y: error_trace.y}],
             layout: {annotations: def_annotation}},
-            {name:'Neutral Control', data: [adj_error,adj_trace],
+            {name:'Neutral Control', data: [{x: adj_trace.x, y: adj_trace.y}, {x: adj_trace.x, y: adj_trace.y}],
             layout: {annotations: control_annotation}},
-            {name:'Democrats-Only', data: [dem_error,dem_trace],
+            {name:'Democrats-Only', data: [{x: dem_trace.x, y: dem_trace.y}, {x: dem_error.x, y: dem_error.y}],
             layout: {annotations: dem_annotation}},
-            {name:'Republicans-Only', data: [gop_error,gop_trace],
+            {name:'Republicans-Only', data: [{x:gop_trace.x, y: gop_trace.y}, {x: gop_error.x, y: gop_error.y}],
             layout: {annotations: gop_annotation}},
         ]
 
@@ -201,8 +201,8 @@ d3.json(json_ref).then((data) => {
                     //                     false, false]},
                     //         {'annotations': def_annotation}
                     //                 ],
-                    args: [['Overall']],
-                    label: 'Overall'
+                    args: [['Media']],
+                    label: 'Media'
                 },
                 {
                     //method: 'update',
@@ -211,7 +211,7 @@ d3.json(json_ref).then((data) => {
                     //                     false, false]},
                     //         {'annotations': control_annotation}
                     //                 ],
-                    args: [['Neutral Control']],
+                    args: [['Neutral Control'], {transition: {duration: 500}}, {frame: {duration: 1000}}],
                     label: 'Neutral Control'
                 },
                 {
@@ -221,7 +221,7 @@ d3.json(json_ref).then((data) => {
                     //                     false, false]},
                     //         {'annotations': dem_annotation}
                     //                 ],
-                    args: [['Democrats-Only']],
+                    args: [['Democrats-Only'], {transition: {duration: 500}, frame: {duration: 1000}}],
                     label: 'Democrats-Only'
                 },
                 {
@@ -231,7 +231,7 @@ d3.json(json_ref).then((data) => {
                     //                     true, true]},
                     //         {'annotations': gop_annotation}
                     //                 ],
-                    args: [['Republicans-Only']],
+                    args: [['Republicans-Only'], {transition: {duration: 500}, frame: {duration: 1000}}],
                     label: 'Republicans-Only'
                 }
             ]
