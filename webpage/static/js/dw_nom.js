@@ -77,7 +77,7 @@ d3.json(json_ref).then((data) => {
         return trace
     }
 
-    myPlot = document.getElementById('media_dw_focused'),
+    myPlot = document.getElementById('media_dw_focused')
         //DEFAULT VIEW
         media_trace = createTrace(data, 'Media', 'Green')
 
@@ -103,13 +103,13 @@ d3.json(json_ref).then((data) => {
         adj_error.y = adj_error.y.map(s => s+twt_bias.y)
 
         adj_error.hoverinfo = 'skip'
-        adj_error.visible = false
+        //adj_error.visible = false
 
         //DEM Trace
         dem_trace = createTrace(data, 'Democrats','blue')
         dem_trace.x = data.map(d => d.dem1)
         dem_trace.y = data.map(d => d.dem2)
-        dem_trace.visible = false
+        //dem_trace.visible = false
         
         dem_marker_size = data.map(d=> d.dem_err*1.4);
         dem_error = deep_copy(dem_trace)
@@ -122,7 +122,7 @@ d3.json(json_ref).then((data) => {
         gop_trace = createTrace(data, 'Republicans','red')
         gop_trace.x = data.map(d => d.gop1)
         gop_trace.y = data.map(d => d.gop2)
-        gop_trace.visible = false
+        //gop_trace.visible = false
         
         gop_marker_size = data.map(d=> d.dem_err*1.4);
         gop_error = deep_copy(gop_trace)
@@ -166,14 +166,25 @@ d3.json(json_ref).then((data) => {
         gop_annotation[0].text = 'Republican Filter'
 
 
+        // var frames=[
+        //     {name:'Overall', data: [error_trace,media_trace],
+        //     layout: {annotations: def_annotation}},
+        //     {name:'Neutral Control', data: [adj_error,adj_trace],
+        //     layout: {annotations: control_annotation}},
+        //     {name:'Democrats-Only', data: [dem_error,dem_trace],
+        //     layout: {annotations: dem_annotation}},
+        //     {name:'Republicans-Only', data: [gop_error,gop_trace],
+        //     layout: {annotations: gop_annotation}},
+        // ]
+
         var frames=[
-            {name:'Overall', data: [error_trace,media_trace],
+            {name:'Overall', data: [media_trace],
             layout: {annotations: def_annotation}},
-            {name:'Neutral Control', data: [adj_error,adj_trace],
+            {name:'Neutral Control', data: [adj_trace],
             layout: {annotations: control_annotation}},
-            {name:'Democrats-Only', data: [dem_error,dem_trace],
+            {name:'Democrats-Only', data: [dem_trace],
             layout: {annotations: dem_annotation}},
-            {name:'Republicans-Only', data: [gop_error,gop_trace],
+            {name:'Republicans-Only', data: [gop_trace],
             layout: {annotations: gop_annotation}},
         ]
 
@@ -240,7 +251,8 @@ d3.json(json_ref).then((data) => {
         };
         
 
-    Plotly.newPlot("media_dw_focused", traces, layout)
+    //Plotly.newPlot("media_dw_focused", traces, layout)
+    Plotly.newPlot("media_dw_focused", [media_trace], layout)
         .then(function(){
             Plotly.addFrames('media_dw_focused', frames)
         })
