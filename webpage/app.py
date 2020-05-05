@@ -46,21 +46,21 @@ def my_form():
 @app.route('/mlmodels', methods=['POST'])
 def mlmodels():
     in_text = request.form['text']
-    # def list_tostring(input_list):
-    #     return ' '.join(input_list)
-    # def remove_stopwords(input_list):
-    #     return [w for w in input_list if not w in stop_words]
-    #fun_input = list_tostring(remove_stopwords(word_tokenize(in_text)))
+    def list_tostring(input_list):
+        return ' '.join(input_list)
+    def remove_stopwords(input_list):
+        return [w for w in input_list if not w in stop_words]
+    fun_input = list_tostring(remove_stopwords(word_tokenize(in_text)))
 
     #X_pred = bigram_vectorizer.transform([fun_input])
     #X_pred = bigram_tf_idf_transformer.transform(X_pred)
     #result = sgd_classifier.predict(X_pred)
-    # result = 'pizza'
-    # if result[0] == 'R':
-    #     party_result = 'Predicted Republican Tweet'
-    # else:
-    #     party_result = 'Predicted Democrat Tweet'+'pizza'
-    party_result = in_text
+    result = 'pizza'
+    if result[0] == 'R':
+        party_result = 'Predicted Republican Tweet'
+    else:
+        party_result = 'Predicted Democrat Tweet'
+        party_result = 'Repeated text: '+in_text
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/sitemap')
