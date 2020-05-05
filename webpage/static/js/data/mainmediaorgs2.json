@@ -18,15 +18,6 @@
         "dim1_stderr": 0.012
     },
     {
-        "site": "www.bloomberg.com",
-        "nominate_dim1": -0.052,
-        "nominate_dim2": -0.077,
-        "total": 1297,
-        "dim1_stddev": 0.47,
-        "dim2_stddev": 0.243,
-        "dim1_stderr": 0.013
-    },
-    {
         "site": "slate.com",
         "nominate_dim1": -0.421,
         "nominate_dim2": -0.242,
@@ -34,6 +25,15 @@
         "dim1_stddev": 0.239,
         "dim2_stddev": 0.214,
         "dim1_stderr": 0.018
+    },
+    {
+        "site": "www.bloomberg.com",
+        "nominate_dim1": -0.052,
+        "nominate_dim2": -0.077,
+        "total": 1297,
+        "dim1_stddev": 0.47,
+        "dim2_stddev": 0.243,
+        "dim1_stderr": 0.013
     },
     {
         "site": "reason.com",
@@ -55,29 +55,29 @@
     },
     {
         "site": "www.washingtonpost.com",
-        "nominate_dim1": -0.3,
-        "nominate_dim2": -0.145,
-        "total": 11607,
-        "dim1_stddev": 0.331,
-        "dim2_stddev": 0.224,
+        "nominate_dim1": -0.305,
+        "nominate_dim2": -0.146,
+        "total": 9856,
+        "dim1_stddev": 0.327,
+        "dim2_stddev": 0.226,
         "dim1_stderr": 0.003
     },
     {
         "site": "www.foxnews.com",
-        "nominate_dim1": 0.509,
-        "nominate_dim2": 0.041,
-        "total": 3171,
-        "dim1_stddev": 0.255,
-        "dim2_stddev": 0.272,
+        "nominate_dim1": 0.515,
+        "nominate_dim2": 0.051,
+        "total": 2095,
+        "dim1_stddev": 0.248,
+        "dim2_stddev": 0.266,
         "dim1_stderr": 0.005
     },
     {
         "site": "www.politico.com",
-        "nominate_dim1": -0.177,
-        "nominate_dim2": -0.094,
-        "total": 3708,
-        "dim1_stddev": 0.433,
-        "dim2_stddev": 0.245,
+        "nominate_dim1": -0.176,
+        "nominate_dim2": -0.091,
+        "total": 3399,
+        "dim1_stddev": 0.434,
+        "dim2_stddev": 0.246,
         "dim1_stderr": 0.007
     },
     {
@@ -90,31 +90,31 @@
         "dim1_stderr": 0.026
     },
     {
-        "site": "www.buzzfeed.com",
-        "nominate_dim1": -0.359,
-        "nominate_dim2": -0.167,
-        "total": 645,
-        "dim1_stddev": 0.304,
-        "dim2_stddev": 0.231,
-        "dim1_stderr": 0.012
+        "site": "www.reuters.com",
+        "nominate_dim1": -0.036,
+        "nominate_dim2": -0.085,
+        "total": 877,
+        "dim1_stddev": 0.478,
+        "dim2_stddev": 0.249,
+        "dim1_stderr": 0.016
     },
     {
-        "site": "www.reuters.com",
-        "nominate_dim1": 0.027,
-        "nominate_dim2": -0.05,
-        "total": 1099,
-        "dim1_stddev": 0.483,
-        "dim2_stddev": 0.254,
-        "dim1_stderr": 0.015
+        "site": "www.buzzfeed.com",
+        "nominate_dim1": -0.336,
+        "nominate_dim2": -0.158,
+        "total": 367,
+        "dim1_stddev": 0.33,
+        "dim2_stddev": 0.233,
+        "dim1_stderr": 0.017
     },
     {
         "site": "www.apnews.com",
-        "nominate_dim1": 0.005,
-        "nominate_dim2": -0.015,
-        "total": 1811,
-        "dim1_stddev": 0.477,
-        "dim2_stddev": 0.263,
-        "dim1_stderr": 0.011
+        "nominate_dim1": -0.049,
+        "nominate_dim2": -0.045,
+        "total": 453,
+        "dim1_stddev": 0.463,
+        "dim2_stddev": 0.262,
+        "dim1_stderr": 0.022
     },
     {
         "site": "www.dailywire.com",
@@ -145,20 +145,20 @@
     },
     {
         "site": "www.wsj.com",
-        "nominate_dim1": 0.284,
-        "nominate_dim2": -0.033,
-        "total": 2680,
-        "dim1_stddev": 0.425,
+        "nominate_dim1": 0.29,
+        "nominate_dim2": -0.038,
+        "total": 2518,
+        "dim1_stddev": 0.423,
         "dim2_stddev": 0.221,
         "dim1_stderr": 0.008
     },
     {
         "site": "www.nytimes.com",
-        "nominate_dim1": -0.325,
-        "nominate_dim2": -0.163,
-        "total": 11140,
-        "dim1_stddev": 0.321,
-        "dim2_stddev": 0.219,
+        "nominate_dim1": -0.326,
+        "nominate_dim2": -0.164,
+        "total": 9073,
+        "dim1_stddev": 0.32,
+        "dim2_stddev": 0.222,
         "dim1_stderr": 0.003
     },
     {
@@ -172,12 +172,12 @@
     },
     {
         "site": "www.usatoday.com",
-        "nominate_dim1": -0.097,
-        "nominate_dim2": -0.09,
-        "total": 2189,
-        "dim1_stddev": 0.461,
-        "dim2_stddev": 0.242,
-        "dim1_stderr": 0.01
+        "nominate_dim1": -0.092,
+        "nominate_dim2": -0.094,
+        "total": 1947,
+        "dim1_stddev": 0.464,
+        "dim2_stddev": 0.243,
+        "dim1_stderr": 0.011
     },
     {
         "site": "www.breitbart.com",
@@ -198,6 +198,15 @@
         "dim1_stderr": 0.014
     },
     {
+        "site": "www.foxbusiness.com",
+        "nominate_dim1": 0.503,
+        "nominate_dim2": 0.066,
+        "total": 360,
+        "dim1_stddev": 0.203,
+        "dim2_stddev": 0.244,
+        "dim1_stderr": 0.011
+    },
+    {
         "site": "theintercept.com",
         "nominate_dim1": -0.454,
         "nominate_dim2": -0.284,
@@ -205,15 +214,6 @@
         "dim1_stddev": 0.295,
         "dim2_stddev": 0.271,
         "dim1_stderr": 0.02
-    },
-    {
-        "site": "www.foxbusiness.com",
-        "nominate_dim1": 0.481,
-        "nominate_dim2": 0.041,
-        "total": 551,
-        "dim1_stddev": 0.25,
-        "dim2_stddev": 0.245,
-        "dim1_stderr": 0.011
     },
     {
         "site": "www.pbs.org",
@@ -234,15 +234,6 @@
         "dim1_stderr": 0.007
     },
     {
-        "site": "www.motherjones.com",
-        "nominate_dim1": -0.465,
-        "nominate_dim2": -0.195,
-        "total": 300,
-        "dim1_stddev": 0.169,
-        "dim2_stddev": 0.2,
-        "dim1_stderr": 0.01
-    },
-    {
         "site": "www.chicagotribune.com",
         "nominate_dim1": -0.284,
         "nominate_dim2": -0.108,
@@ -250,6 +241,15 @@
         "dim1_stddev": 0.279,
         "dim2_stddev": 0.233,
         "dim1_stderr": 0.012
+    },
+    {
+        "site": "www.motherjones.com",
+        "nominate_dim1": -0.465,
+        "nominate_dim2": -0.195,
+        "total": 300,
+        "dim1_stddev": 0.169,
+        "dim2_stddev": 0.2,
+        "dim1_stderr": 0.01
     },
     {
         "site": "www.axios.com",
@@ -262,12 +262,12 @@
     },
     {
         "site": "www.nbcnews.com",
-        "nominate_dim1": -0.317,
-        "nominate_dim2": -0.123,
-        "total": 2300,
-        "dim1_stddev": 0.329,
-        "dim2_stddev": 0.238,
-        "dim1_stderr": 0.007
+        "nominate_dim1": -0.324,
+        "nominate_dim2": -0.131,
+        "total": 1874,
+        "dim1_stddev": 0.327,
+        "dim2_stddev": 0.24,
+        "dim1_stderr": 0.008
     },
     {
         "site": "thefederalist.com",
@@ -280,20 +280,20 @@
     },
     {
         "site": "www.cnn.com",
-        "nominate_dim1": -0.292,
-        "nominate_dim2": -0.136,
-        "total": 3541,
-        "dim1_stddev": 0.351,
-        "dim2_stddev": 0.235,
+        "nominate_dim1": -0.293,
+        "nominate_dim2": -0.138,
+        "total": 3224,
+        "dim1_stddev": 0.349,
+        "dim2_stddev": 0.237,
         "dim1_stderr": 0.006
     },
     {
         "site": "www.npr.org",
-        "nominate_dim1": -0.345,
-        "nominate_dim2": -0.128,
-        "total": 1890,
-        "dim1_stddev": 0.287,
-        "dim2_stddev": 0.232,
+        "nominate_dim1": -0.347,
+        "nominate_dim2": -0.129,
+        "total": 1712,
+        "dim1_stddev": 0.289,
+        "dim2_stddev": 0.234,
         "dim1_stderr": 0.007
     },
     {
@@ -325,11 +325,11 @@
     },
     {
         "site": "www.huffingtonpost.com",
-        "nominate_dim1": -0.424,
-        "nominate_dim2": -0.189,
-        "total": 1485,
-        "dim1_stddev": 0.194,
-        "dim2_stddev": 0.227,
-        "dim1_stderr": 0.005
+        "nominate_dim1": -0.426,
+        "nominate_dim2": -0.181,
+        "total": 1148,
+        "dim1_stddev": 0.196,
+        "dim2_stddev": 0.213,
+        "dim1_stderr": 0.006
     }
 ]

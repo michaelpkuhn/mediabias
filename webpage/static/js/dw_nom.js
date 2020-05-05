@@ -45,53 +45,8 @@ d3.json(json_ref).then((data) => {
     Plotly.newPlot("dw", data, layout)
 })
 
-/* 
-Media Scalar
 
-json_ref = "../testtable.json"
-
-d3.json(json_ref).then((data) => {
-    var plot_width = 750;
-    var plot_height = 750;
-    var margin_l = 100;
-    var margin_r = 100;
-    function createTrace(dict, d_name, d_color){
-        var trace = {
-            x: dict.map(d => d.nominate_dim1),
-            y: dict.map(d => d.nominate_dim2),
-            hovertext: dict.map(d=> "Website: "+d.site+'<br>'+"Count: "+d.count),
-            type: "scatter",
-            mode: 'markers',
-            marker: {color: d_color, size: dict.map(d=>d.count/100)},
-            name: d_name
-    
-        }
-        console.log(dict.map(d=>d.size))
-        return trace
-    }
-
-    media_trace = createTrace(data, 'Media', 'Green')
-
-    var data = [media_trace]
-
-    var layout = {
-        width: plot_width,
-        height: plot_height,
-        margin: {l: margin_l, r: margin_r},
-        title: {
-            text: "DW NOMINATE Media"
-        },
-        yaxis: {title: "Inter-Party Differences Spectrum",
-                range: [-1,1]},
-        xaxis: {title: "Liberal-Conservative Spectrum",
-                range: [-1,1]},
-        hovermode:'closest'
-    }
-
-    Plotly.newPlot("media_dw", data, layout)
-})
- */
-
+//Media Nominate Scores
 json_ref = "static/js/data/mainmediaorgs3.json"
 
 function deep_copy(v1){
@@ -181,6 +136,8 @@ d3.json(json_ref).then((data) => {
         var traces = [error_trace, media_trace, adj_error,adj_trace,
                         dem_error, dem_trace, gop_error, gop_trace]
 
+        //var traces = [error_trace, media_trace]
+
         
         var def_annotation = [{
             xref: 'paper',
@@ -209,6 +166,17 @@ d3.json(json_ref).then((data) => {
         gop_annotation[0].text = 'Republican Filter'
 
 
+        var frames=[
+            {name:'Overall', data: [error_trace,media_trace],
+            layout: {annotations: def_annotation}},
+            {name:'Neutral Control', data: [adj_error,adj_trace],
+            layout: {annotations: control_annotation}},
+            {name:'Democrats-Only', data: [dem_error,dem_trace],
+            layout: {annotations: dem_annotation}},
+            {name:'Republicans-Only', data: [gop_error,gop_trace],
+            layout: {annotations: gop_annotation}},
+        ]
+
         var layout = {
             width: plot_width,
             height: plot_height,
@@ -227,72 +195,116 @@ d3.json(json_ref).then((data) => {
                 y: 0.8,
                 yanchor: 'top',
                 buttons: [{
-                    method: 'update',
-                    args: [{'visible': [true, true, false, false, false, false,
-                                        false, false]},
-                            {'annotations': def_annotation}
-                                    ],
+                    //method: 'update',
+                    method: 'animate',
+                    // args: [{'visible': [true, true, false, false, false, false,
+                    //                     false, false]},
+                    //         {'annotations': def_annotation}
+                    //                 ],
+                    args: [['Overall']],
                     label: 'Overall'
                 },
                 {
-                    method: 'update',
-                    args: [{'visible': [false, false, true, true, false, false,
-                                        false, false]},
-                            {'annotations': control_annotation}
-                                    ],
+                    //method: 'update',
+                    method: 'animate',
+                    // args: [{'visible': [false, false, true, true, false, false,
+                    //                     false, false]},
+                    //         {'annotations': control_annotation}
+                    //                 ],
+                    args: [['Neutral Control']],
                     label: 'Neutral Control'
                 },
                 {
-                    method: 'update',
-                    args: [{'visible': [false, false, false, false, true, true,
-                                        false, false]},
-                            {'annotations': dem_annotation}
-                                    ],
+                    //method: 'update',
+                    method: 'animate',
+                    // args: [{'visible': [false, false, false, false, true, true,
+                    //                     false, false]},
+                    //         {'annotations': dem_annotation}
+                    //                 ],
+                    args: [['Democrats-Only']],
                     label: 'Democrats-Only'
                 },
                 {
-                    method: 'update',
-                    args: [{'visible': [false, false,false,false,false,false,
-                                        true, true]},
-                            {'annotations': gop_annotation}
-                                    ],
+                    //method: 'update',
+                    method: 'animate',
+                    // args: [{'visible': [false, false,false,false,false,false,
+                    //                     true, true]},
+                    //         {'annotations': gop_annotation}
+                    //                 ],
+                    args: [['Republicans-Only']],
                     label: 'Republicans-Only'
                 }
             ]
             }],
             annotations: def_annotation
-            // annotations: [{
-            //     xref: 'paper',
-            //     yref: 'paper',
-            //     x: -0.2,
-            //     xanchor: 'right',
-            //     y: .5,
-            //     yanchor: 'bottom',
-            //     text: 'Standard view',
-            //     showarrow: false
-            // }]
         };
+        
 
     Plotly.newPlot("media_dw_focused", traces, layout)
+        .then(function(){
+            Plotly.addFrames('media_dw_focused', frames)
+        })
 
     //Scales Error Circles
     myPlot.on("plotly_relayout", function(eventdata) {
+        let chart_name = document.getElementsByClassName('updatemenu-item-text user-select-none')[0].textContent
         var update = []
-        if (eventdata["xaxis.range[1]"] !== undefined) {
-        console.log('If: ', eventdata['xaxis.range[1]'])
+        
+        if (chart_name==='Democrats-Only'){
+            var mark = dem_marker_size
+        }
+        else if (chart_name==='Republicans-Only'){
+            var mark = gop_marker_size
+        }
+        else{
+            var mark = marker_size
+        }
 
-        update = marker_size.map(s=>
+        mark = marker_size
+
+        if (eventdata["xaxis.range[1]"] !== undefined) {
+        //console.log('If: ', eventdata['xaxis.range[1]'])
+        //marker_size
+        update = mark.map(s=>
                 s * (plot_width - margin_l - margin_r) /
                 (eventdata["xaxis.range[1]"] - eventdata["xaxis.range[0]"]))
         }
         else {
-        console.log('Else: ', eventdata['xaxis.range[1]'])
+        //console.log('Else: ', eventdata['xaxis.range[1]'])
 
-        update = marker_size.map(s=>s*(plot_width-
+        update = mark.map(s=>s*(plot_width-
             margin_l - margin_r)/(xaxis_stop-xaxis_start))
         };
     //Does not rescale Dem or GOP error
       Plotly.restyle("media_dw_focused", "marker.size", [update], [0]);
 
     });
+
+    //runs on button update
+    // myPlot.on("plotly_update", function(eventdata){
+    //     let chart_name = document.getElementsByClassName('updatemenu-item-text user-select-none')[0].textContent
+    //     var update = []
+        
+    //     if (chart_name==='Democrats-Only'){
+    //         var change = [dem_error, dem_trace]
+    //     }
+    //     else if (chart_name==='Republicans-Only'){
+    //         var change = [gop_error, gop_trace]
+    //     }
+    //     else if(chart_name==='Neutral Control'){
+    //         var change = [adj_error, adj_trace]
+    //     }
+    //     else{
+    //         var change = [error_trace, media_trace]
+    //     }
+        
+    //     console.log(change)
+
+    //     Plotly.animate('media_dw_focused',{
+    //         //data: ,
+    //         trace: change,
+    //         transition: {duration: 500},
+    //         frame: {duration: 500}
+    //     })
+    // })
 })

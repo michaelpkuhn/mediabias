@@ -26,6 +26,7 @@ def sitemap():
     home_page = '/'
     classify_page = '/classification'
     ranking_page = '/ranking'
+    method_page = '/methodology'
     return(
         f"Available Routes:<br/>"
         f"<a href={home_page}>Home</a><br/>"
