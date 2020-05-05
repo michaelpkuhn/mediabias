@@ -54,11 +54,12 @@ def mlmodels():
 
     X_pred = bigram_vectorizer.transform([fun_input])
     X_pred = bigram_tf_idf_transformer.transform(X_pred)
-    result = sgd_classifier.predict(X_pred)
+    #result = sgd_classifier.predict(X_pred)
+    result = 'pizza'
     if result[0] == 'R':
         party_result = 'Predicted Republican Tweet'
     else:
-        party_result = 'Predicted Democrat Tweet'
+        party_result = 'Predicted Democrat Tweet'+'pizza'
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/sitemap')
