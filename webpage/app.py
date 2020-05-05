@@ -61,7 +61,6 @@ def mlmodels():
         party_result = 'Predicted Republican Tweet'
     else:
         party_result = 'Predicted Democrat Tweet'
-        party_result = 'Repeated text: '+in_text+' runs?'
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/sitemap')
