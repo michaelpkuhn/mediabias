@@ -10,6 +10,8 @@ nltk.download('punkt')
 from sklearn.linear_model import SGDClassifier
 #from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
+stop_words = set(stopwords.words('english'))
+
 
 
 app = Flask(__name__)
@@ -22,8 +24,10 @@ def my_form():
 def my_form_post():
     def list_tostring(input_list):
         return ' '.join(input_list)
+    def remove_stopwords(input_list):
+        return [w for w in input_list if not w in stop_words]
     in_text = request.form['text']
-    fun_input = list_tostring(word_tokenize(in_text))
+    fun_input = list_tostring(remove_stopwords(word_tokenize(in_text)))
     bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
     bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
     X_pred = bigram_vectorizer.transform([fun_input])
