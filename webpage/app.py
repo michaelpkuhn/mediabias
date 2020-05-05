@@ -52,8 +52,8 @@ def mlmodels():
     in_text = request.form['text']
     fun_input = list_tostring(remove_stopwords(word_tokenize(in_text)))
 
-    X_pred = bigram_vectorizer.transform([fun_input])
-    X_pred = bigram_tf_idf_transformer.transform(X_pred)
+    #X_pred = bigram_vectorizer.transform([fun_input])
+    #X_pred = bigram_tf_idf_transformer.transform(X_pred)
     #result = sgd_classifier.predict(X_pred)
     result = 'pizza'
     if result[0] == 'R':
