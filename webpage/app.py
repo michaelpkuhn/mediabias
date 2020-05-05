@@ -3,11 +3,11 @@ from flask import Flask, jsonify, render_template, redirect, make_response, json
 from joblib import load
 
 # Tools to remove stopwords from tweets
-# import nltk
-# from nltk.corpus import stopwords
-# nltk.download('stopwords')
-# from nltk.tokenize import word_tokenize
-# nltk.download('punkt')
+import nltk
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
 
 # from sklearn.linear_model import SGDClassifier
 # from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
