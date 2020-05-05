@@ -1,5 +1,16 @@
-from flask import Flask, jsonify, render_template, redirect, make_response, json
+from flask import Flask, jsonify, render_template, redirect, make_response, json, request
 
+# Tools to remove stopwords from tweets
+import nltk
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
+
+from sklearn.linear_model import SGDClassifier
+#from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+
+stop_words = set(stopwords.words('english'))
 
 app = Flask(__name__)
 app.config['DEBUG']= True
@@ -20,6 +31,10 @@ def classify():
 @app.route('/methodology')
 def method():
     return render_template('Methodology.html')
+
+@app.route('/mlmodels')
+def home():
+    return render_template('mlmodels.html')
 
 @app.route('/sitemap')
 def sitemap():
