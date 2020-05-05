@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, render_template, redirect, make_response, json, request
 
+from joblib import load
+
 # Tools to remove stopwords from tweets
 import nltk
 from nltk.corpus import stopwords
@@ -11,10 +13,12 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 stop_words = set(stopwords.words('english'))
+
 bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
 bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
 sgd_classifier = load('classifiers/sgd_classifier.joblib')
 
+party_prediction = ''
 
 app = Flask(__name__)
 app.config['DEBUG']= True
@@ -52,7 +56,8 @@ def mlmodels():
         party_result = 'Predicted Republican Tweet'
     else:
         party_result = 'Predicted Democrat Tweet'
-    return render_template('index.html', party_prediction = party_result)
+    party_result = in_text
+    return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/sitemap')
 def sitemap():
@@ -60,7 +65,7 @@ def sitemap():
     classify_page = '/classification'
     ranking_page = '/ranking'
     method_page = '/methodology'
-    mlmodels_pagge = '/mlmodels'
+    mlmodels_page = '/mlmodels'
     return(
         f"Available Routes:<br/>"
         f"<a href={home_page}>Home</a><br/>"
