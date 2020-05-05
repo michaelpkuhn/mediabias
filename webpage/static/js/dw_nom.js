@@ -178,23 +178,13 @@ d3.json(json_ref).then((data) => {
         // ]
 
         var frames=[
-<<<<<<< HEAD
-            {name:'Overall', data: [media_trace],
+            {name:'Media', data: [{x: error_trace.x, y: error_trace.y}, {x: media_trace.x, y: media_trace.y}],
             layout: {annotations: def_annotation}},
-            {name:'Neutral Control', data: [adj_trace],
+            {name:'Neutral Control', data: [{x: adj_trace.x, y: adj_trace.y},{x: adj_trace.x, y: adj_trace.y}],
             layout: {annotations: control_annotation}},
-            {name:'Democrats-Only', data: [dem_trace],
-            layout: {annotations: dem_annotation}},
-            {name:'Republicans-Only', data: [gop_trace],
-=======
-            {name:'Media', data: [{x: media_trace.x, y: media_trace.y}, {x: error_trace.x, y: error_trace.y}],
-            layout: {annotations: def_annotation}},
-            {name:'Neutral Control', data: [{x: adj_trace.x, y: adj_trace.y}, {x: adj_trace.x, y: adj_trace.y}],
-            layout: {annotations: control_annotation}},
-            {name:'Democrats-Only', data: [{x: dem_trace.x, y: dem_trace.y}, {x: dem_error.x, y: dem_error.y}],
-            layout: {annotations: dem_annotation}},
-            {name:'Republicans-Only', data: [{x:gop_trace.x, y: gop_trace.y}, {x: gop_error.x, y: gop_error.y}],
->>>>>>> 6fc9fe590b9807362fe6713ba7b8bc8effe34e75
+            {name:'Democrats-Only', data: [{x: dem_error.x, y: dem_error.y}, {x: dem_trace.x, y: dem_trace.y}],
+            layout: {annotations: dem_annotation, marker: {color:'blue'}}},
+            {name:'Republicans-Only', data: [{x: gop_error.x, y: gop_error.y}, {x:gop_trace.x, y: gop_trace.y}],
             layout: {annotations: gop_annotation}},
         ]
 
@@ -262,7 +252,7 @@ d3.json(json_ref).then((data) => {
         
 
     //Plotly.newPlot("media_dw_focused", traces, layout)
-    Plotly.newPlot("media_dw_focused", [media_trace], layout)
+    Plotly.newPlot("media_dw_focused", [error_trace, media_trace], layout)
         .then(function(){
             Plotly.addFrames('media_dw_focused', frames)
         })
