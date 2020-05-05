@@ -18,7 +18,6 @@ bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
 bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
 sgd_classifier = load('classifiers/sgd_classifier.joblib')
 
-party_prediction = ''
 
 app = Flask(__name__)
 app.config['DEBUG']= True
@@ -40,6 +39,10 @@ def classify():
 def method():
     return render_template('Methodology.html')
 
+@app.route('/mlmodels')
+def my_form():
+    return render_template('mlmodels.html',party_prediction = '')
+
 @app.route('/mlmodels', methods=['POST'])
 def mlmodels():
     def list_tostring(input_list):
@@ -56,7 +59,6 @@ def mlmodels():
         party_result = 'Predicted Republican Tweet'
     else:
         party_result = 'Predicted Democrat Tweet'
-    party_result = in_text
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/sitemap')
