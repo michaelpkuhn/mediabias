@@ -3,20 +3,20 @@ from flask import Flask, jsonify, render_template, redirect, make_response, json
 from joblib import load
 
 # Tools to remove stopwords from tweets
-import nltk
-from nltk.corpus import stopwords
-nltk.download('stopwords')
-from nltk.tokenize import word_tokenize
-nltk.download('punkt')
+# import nltk
+# from nltk.corpus import stopwords
+# nltk.download('stopwords')
+# from nltk.tokenize import word_tokenize
+# nltk.download('punkt')
 
-from sklearn.linear_model import SGDClassifier
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+# from sklearn.linear_model import SGDClassifier
+# from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
-stop_words = set(stopwords.words('english'))
+# stop_words = set(stopwords.words('english'))
 
-bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
-bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
-sgd_classifier = load('classifiers/sgd_classifier.joblib')
+# bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
+# bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
+# sgd_classifier = load('classifiers/sgd_classifier.joblib')
 
 
 app = Flask(__name__)
