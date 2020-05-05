@@ -17,7 +17,7 @@ stop_words = set(stopwords.words('english'))
 # bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
 # bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
 temp_path = os.path.abspath('classifiers/sgd_classifier.joblib')
-sgd_classifier = load(temp_path)
+# sgd_classifier = load(temp_path)
 
 app = Flask(__name__)
 app.config['DEBUG']= True
