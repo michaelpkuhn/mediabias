@@ -10,7 +10,10 @@ nltk.download('punkt')
 from sklearn.linear_model import SGDClassifier
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
-
+stop_words = set(stopwords.words('english'))
+bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
+bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
+sgd_classifier = load('classifiers/sgd_classifier.joblib')
 
 
 app = Flask(__name__)
@@ -34,10 +37,6 @@ def method():
     return render_template('Methodology.html')
 
 @app.route('/mlmodels', methods=['POST'])
-stop_words = set(stopwords.words('english'))
-bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
-bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
-sgd_classifier = load('classifiers/sgd_classifier.joblib')
 def mlmodels():
     def list_tostring(input_list):
         return ' '.join(input_list)
