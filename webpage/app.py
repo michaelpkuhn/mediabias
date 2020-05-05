@@ -18,8 +18,8 @@ stop_words = set(stopwords.words('english'))
 # bigram_vectorizer = load(temp_path)
 # temp_path = os.path.abspath('data_preprocessors/bigram_tf_idf_transformer.joblib')
 # bigram_tf_idf_transformer = load(temp_path)
-temp_path = os.path.abspath('classifiers/sgd_classifier.joblib')
-sgd_classifier = load(temp_path)
+# temp_path = os.path.abspath('classifiers/sgd_classifier.joblib')
+# sgd_classifier = load(temp_path)
 
 app = Flask(__name__)
 app.config['DEBUG']= True
@@ -61,7 +61,7 @@ def mlmodels():
     if result[0] == 'R':
         party_result = 'Predicted Republican Tweet'
     else:
-        party_result = 'Predicted Democrat Tweet'+' loads sgf'
+        party_result = 'Predicted Democrat Tweet'+' loads nothing'
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/sitemap')
