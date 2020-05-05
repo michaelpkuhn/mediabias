@@ -10,7 +10,7 @@ from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 
 from sklearn.linear_model import SGDClassifier
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+#from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 stop_words = set(stopwords.words('english'))
 
