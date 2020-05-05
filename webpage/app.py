@@ -15,7 +15,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 stop_words = set(stopwords.words('english'))
 
 # bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
-# bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
+bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
 sgd_classifier = load('classifiers/sgd_classifier.joblib')
 
 
@@ -60,7 +60,7 @@ def mlmodels():
         party_result = 'Predicted Republican Tweet'
     else:
         party_result = 'Predicted Democrat Tweet'
-        party_result = 'Loads sgd Repeated text: '+in_text
+        party_result = 'Loads transformer Repeated text: '+in_text
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/sitemap')
