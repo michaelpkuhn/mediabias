@@ -14,19 +14,13 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 stop_words = set(stopwords.words('english'))
 
-bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
-bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
-sgd_classifier = load('classifiers/sgd_classifier.joblib')
+# bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
+# bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
+# sgd_classifier = load('classifiers/sgd_classifier.joblib')
 
 
 app = Flask(__name__)
 app.config['DEBUG']= True
-
-
-# def list_tostring(input_list):
-#     return ' '.join(input_list)
-# def remove_stopwords(input_list):
-#     return [w for w in input_list if not w in stop_words]
 
 
 @app.route('/')
@@ -52,6 +46,10 @@ def my_form():
 @app.route('/mlmodels', methods=['POST'])
 def mlmodels():
     in_text = request.form['text']
+    # def list_tostring(input_list):
+    #     return ' '.join(input_list)
+    # def remove_stopwords(input_list):
+    #     return [w for w in input_list if not w in stop_words]
     #fun_input = list_tostring(remove_stopwords(word_tokenize(in_text)))
 
     #X_pred = bigram_vectorizer.transform([fun_input])
