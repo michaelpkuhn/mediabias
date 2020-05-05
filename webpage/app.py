@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template, redirect, make_response, json, request
-
+import os
 from joblib import load
 
 # Tools to remove stopwords from tweets
@@ -16,8 +16,8 @@ stop_words = set(stopwords.words('english'))
 
 # bigram_vectorizer = load('data_preprocessors/bigram_vectorizer.joblib')
 # bigram_tf_idf_transformer = load('data_preprocessors/bigram_tf_idf_transformer.joblib')
-# sgd_classifier = load('classifiers/sgd_classifier.joblib')
-
+temp_path = os.path.abspath('classifiers/sgd_classifier.joblib')
+sgd_classifier = load(temp_path)
 
 app = Flask(__name__)
 app.config['DEBUG']= True
@@ -60,7 +60,7 @@ def mlmodels():
         party_result = 'Predicted Republican Tweet'
     else:
         party_result = 'Predicted Democrat Tweet'
-        party_result = 'Repeated text: '+in_text
+        party_result = 'Repeated text: '+in_text+' '+temp_path
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/sitemap')
