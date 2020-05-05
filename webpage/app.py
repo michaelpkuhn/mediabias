@@ -33,7 +33,7 @@ def method():
     return render_template('Methodology.html')
 
 @app.route('/mlmodels')
-def home():
+def mlmodels():
     return render_template('mlmodels.html')
 
 @app.route('/sitemap')
