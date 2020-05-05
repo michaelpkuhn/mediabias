@@ -23,6 +23,12 @@ app = Flask(__name__)
 app.config['DEBUG']= True
 
 
+def list_tostring(input_list):
+    return ' '.join(input_list)
+def remove_stopwords(input_list):
+    return [w for w in input_list if not w in stop_words]
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -45,10 +51,6 @@ def my_form():
 
 @app.route('/mlmodels', methods=['POST'])
 def mlmodels():
-    def list_tostring(input_list):
-        return ' '.join(input_list)
-    def remove_stopwords(input_list):
-        return [w for w in input_list if not w in stop_words]
     in_text = request.form['text']
     #fun_input = list_tostring(remove_stopwords(word_tokenize(in_text)))
 
