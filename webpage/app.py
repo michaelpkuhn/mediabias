@@ -23,8 +23,8 @@ app = Flask(__name__)
 app.config['DEBUG']= True
 
 
-def list_tostring(input_list):
-    return ' '.join(input_list)
+# def list_tostring(input_list):
+#     return ' '.join(input_list)
 def remove_stopwords(input_list):
     return [w for w in input_list if not w in stop_words]
 
