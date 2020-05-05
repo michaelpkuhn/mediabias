@@ -12,15 +12,43 @@
 </head>
 
 <body>
-  <form method="POST">
-      <input name="text">
-      <input type="submit">
-  </form>
-  {{party_prediction}}
-<!--
-    <script src="js/scripts.js"></script>
--->
-
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Media Bias</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ranking">Ranking</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="classification">Classifications</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="methodology">Methodology</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mlmodels">ML Models</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sitemap">Site Map</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="headers">Party predictor</h2>
+                <p>
+                    Type in a tweet to get a prediction of tweeters political party.
+                </p>
+                <form method="POST">
+                    <input name="text">
+                    <input type="submit">
+                </form>
+                {{party_prediction}}
+            </div>
+        </div>
+    </div>
 </body>
 
 <footer>
