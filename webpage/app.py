@@ -14,12 +14,12 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 stop_words = set(stopwords.words('english'))
 
-# temp_path = os.path.abspath('data_preprocessors/bigram_vectorizer.joblib')
-# bigram_vectorizer = load(temp_path)
-# temp_path = os.path.abspath('data_preprocessors/bigram_tf_idf_transformer.joblib')
-# bigram_tf_idf_transformer = load(temp_path)
-# temp_path = os.path.abspath('classifiers/sgd_classifier.joblib')
-# sgd_classifier = load(temp_path)
+temp_path = os.path.abspath('/static/js/data/data_preprocessors/bigram_vectorizer.joblib')
+bigram_vectorizer = load(temp_path)
+temp_path = os.path.abspath('/static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
+bigram_tf_idf_transformer = load(temp_path)
+temp_path = os.path.abspath('/static/js/data/classifiers/sgd_classifier.joblib')
+sgd_classifier = load(temp_path)
 
 app = Flask(__name__)
 app.config['DEBUG']= True
