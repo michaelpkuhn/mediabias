@@ -59,7 +59,9 @@ def my_form():
 def mlmodels():
     in_text = request.form['text']
     if loading_error:
-        party_result = os.getcwd()+' loaded '+str(num_loaded)
+        def list_tostring(input_list):
+            return '   '.join(input_list)
+        party_result = os.getcwd()+' loaded '+str(num_loaded)+'  '+list_tostring(os.listdir())
     else:
         def list_tostring(input_list):
             return ' '.join(input_list)
