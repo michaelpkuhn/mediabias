@@ -2,10 +2,6 @@
 import os
 import sys
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'webpage/static'),
-)
-
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project2_heroku.settings")
 
