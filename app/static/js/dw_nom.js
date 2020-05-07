@@ -1,9 +1,65 @@
 //116th Congress
 json_ref = "static/js/data/HS116_members.json"
 
-d3.json(json_ref).then((data) => {
-    var plot_width = 750;
-    var plot_height = 750;
+d3.json(json_ref).then((json_data) => {
+    var ctx = document.getElementById('dw_chart').getContext('2d');
+
+    let dem = json_data.filter(d => d.party_code === 100);
+    let gop = json_data.filter(d => d.party_code === 200);
+    let ind = json_data.filter(d => d.party_code != 100 && d.party_code != 200)
+    
+    var myChart = new Chart(ctx, {
+        type: 'scatter',
+    
+        data:{
+            datasets:[{
+                label: 'Democrats',
+                data: dem.map(d => {
+                    point = {};
+                    point.x = d.nominate_dim1; 
+                    point.y = d.nominate_dim2;
+                    point.bioname = d.bioname;
+                    return point}),
+                    backgroundColor: 'blue'
+            },
+            {
+                label: 'Republicans',                
+                data: gop.map(d => {
+                    point = {};
+                    point.x = d.nominate_dim1; 
+                    point.y = d.nominate_dim2;
+                    point.bioname = d.bioname;
+                    return point}),
+                    backgroundColor: 'red'
+            },
+            {
+                label: 'Independents',                
+                data: ind.map(d => {
+                    point = {};
+                    point.x = d.nominate_dim1; 
+                    point.y = d.nominate_dim2;
+                    point.bioname = d.bioname;
+                    return point}),
+                    backgroundColor: 'grey'
+            }]
+        },
+        options: {
+            tooltips:{
+                callbacks: {
+                    label: function(tooltipItem, data){
+                        //console.log(data.datasets)
+                        //console.log(data.datasets[0]['data'][tooltipItem['index']])
+                        let item = data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem.index];
+                        return ['('+item.y+item.x+')',item.bioname];
+                    }
+                }
+            }
+        }
+    })
+
+    console.log(myChart.data)
+/*     var plot_width = 600;
+    var plot_height = 600;
     var margin_l = 100;
     var margin_r = 100;
     dem = data.filter(d => d.party_code === 100);
@@ -42,8 +98,10 @@ d3.json(json_ref).then((data) => {
         hovermode:'closest'
     }
 
-    Plotly.newPlot("dw", data, layout)
+    Plotly.newPlot("dw", data, layout) */
 })
+
+
 
 /* 
 Media Scalar
@@ -100,8 +158,8 @@ function deep_copy(v1){
 }
 
 d3.json(json_ref).then((data) => {
-    var plot_width = 750+150;
-    var plot_height = 750;
+    var plot_width = 600+150;
+    var plot_height = 600;
     var margin_l = 250;
     var margin_r = 100;
     marker_size = data.map(d=> d.std_err*1.4); // x-axis units
@@ -185,7 +243,7 @@ d3.json(json_ref).then((data) => {
         var def_annotation = [{
             xref: 'paper',
             yref: 'paper',
-            x: -0.375,
+            x: -0.55,
             xanchor: 'left',
             y: .7,
             yanchor: 'top',
@@ -221,9 +279,9 @@ d3.json(json_ref).then((data) => {
             xaxis: {title: "Liberal-Conservative Spectrum",
                     range: [-1,1]},
             hovermode:'closest',
-            legend: {x: -0.4, y:1},
+            legend: {x: -0.55, y:1},
             updatemenus: [{
-                x: -0.1,
+                x: -0.175,
                 y: 0.8,
                 yanchor: 'top',
                 buttons: [{
