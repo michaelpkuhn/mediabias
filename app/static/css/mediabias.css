@@ -1,9 +1,9 @@
 body{
     background-image: url('./resources/newspaper2.jpg');
-    background-color: antiquewhite;
+    background-color: #F7F1DB;
     background-size: cover;
 }
 
 .container {
-    background-color: antiquewhite;
+    background-color: #F7F1DB;
 }
