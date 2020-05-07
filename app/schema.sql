@@ -204,3 +204,27 @@ where accounts.bioguide_id = members.bioguide_id
 select domain_name, round(avg(nominate_dim1),3) AS nominate_dim1, 
 round(avg(nominate_dim2),3) AS nominate_dim2, count(domain_name) 
 from dem_table GROUP BY domain_name
+
+
+select domain_name, count(domain_name) as domain_count, round(avg(nominate_dim1),3) AS nominate_dim1, round(avg(nominate_dim2),3) AS nominate_dim2,
+round(stddev_samp(nominate_dim1),3) AS dim1_stddev, round(stddev_samp(nominate_dim2),3) AS dim2_stddev into tenthousand_db
+from analysis_table 
+where domain_name NOT LIKE '%.gov'
+group by domain_name
+order by count(domain_name) desc
+LIMIT 10000
+
+select * from tenthousand_db
+
+select domain_name, domain_count, nominate_dim1, nominate_dim2, dim1_stddev, dim2_stddev, round((dim1_stddev/sqrt(domain_count-1))::numeric,3) as dim1_stderr,
+round((dim2_stddev/sqrt(domain_count-1))::numeric,3) as dim2_stderr
+into final_db
+from tenthousand_db
+where domain_count>1
+group by domain_name, domain_count, nominate_dim1, nominate_dim2, dim1_stddev, dim2_stddev
+order by domain_count desc
+
+
+drop table final_db
+
+select * from final_db
