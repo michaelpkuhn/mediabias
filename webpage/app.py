@@ -57,7 +57,7 @@ def mlmodels():
     # X_pred = bigram_vectorizer.transform([fun_input])
     # X_pred = bigram_tf_idf_transformer.transform(X_pred)
     # result = sgd_classifier.predict(X_pred)
-    party_result = 'pizza'
+    result = ['pizza']
     if result[0] == 'R':
         party_result = 'Predicted Republican Tweet'
     else:
