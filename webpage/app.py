@@ -14,12 +14,12 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 stop_words = set(stopwords.words('english'))
 
-temp_path = os.path.abspath('static/js/data/data_preprocessors/bigram_vectorizer.joblib')
-bigram_vectorizer = load('static/js/data/data_preprocessors/bigram_vectorizer.joblib')
-temp_path = os.path.abspath('static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
-bigram_tf_idf_transformer = load('static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
-temp_path = os.path.abspath('static/js/data/classifiers/sgd_classifier.joblib')
-sgd_classifier = load('static/js/data/classifiers/sgd_classifier.joblib')
+#temp_path = os.path.abspath('static/js/data/data_preprocessors/bigram_vectorizer.joblib')
+bigram_vectorizer = load('./static/js/data/data_preprocessors/bigram_vectorizer.joblib')
+#temp_path = os.path.abspath('./static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
+bigram_tf_idf_transformer = load('./static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
+#temp_path = os.path.abspath('./static/js/data/classifiers/sgd_classifier.joblib')
+sgd_classifier = load('./static/js/data/classifiers/sgd_classifier.joblib')
 
 app = Flask(__name__)
 app.config['DEBUG']= True
