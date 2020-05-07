@@ -118,6 +118,7 @@ def sitemap():
     ranking_page = '/ranking'
     method_page = '/methodology'
     mlmodels_page = '/mlmodels'
+    database_page = '/database'
     return(
         f"Available Routes:<br/>"
         f"<a href={home_page}>Home</a><br/>"
@@ -125,6 +126,7 @@ def sitemap():
         f"<a href={ranking_page}>{ranking_page}</a><br/>"
         f"<a href={method_page}>{method_page}</a><br/>"
         f"<a href={mlmodels_page}>{mlmodels_page}</a><br/>"
+        f"<a href={database_page}>{database_page}</a><br/>"
         )
 
 
