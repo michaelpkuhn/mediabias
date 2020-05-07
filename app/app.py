@@ -28,17 +28,16 @@ loading_error = False
 num_loaded = 0
 temp_path = ''
 try:
-    # #temp_path = os.path.abspath('static/js/data/data_preprocessors/bigram_vectorizer.joblib')
-    bigram_vectorizer = load('./static/js/data/data_preprocessors/bigram_vectorizer.joblib')
-    num_loaded+=1
-    # #temp_path = os.path.abspath('./static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
-    bigram_tf_idf_transformer = load('./static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
-    num_loaded+=1
-    # #temp_path = os.path.abspath('./static/js/data/classifiers/sgd_classifier.joblib')
-    sgd_classifier = load('./static/js/data/classifiers/sgd_classifier.joblib')
-    num_loaded+=1
+    # Works on heroku
+    bigram_vectorizer = load('app/static/js/data/data_preprocessors/bigram_vectorizer.joblib')
+    bigram_tf_idf_transformer = load('app/static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
+    sgd_classifier = load('app/static/js/data/classifiers/sgd_classifier.joblib')
 except:
+    # Works locally
     loading_error=True
+    bigram_vectorizer = load('./static/js/data/data_preprocessors/bigram_vectorizer.joblib')
+    bigram_tf_idf_transformer = load('./static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
+    sgd_classifier = load('./static/js/data/classifiers/sgd_classifier.joblib')
 
 
 app = Flask(__name__)
@@ -74,22 +73,24 @@ def my_form():
 @app.route('/mlmodels', methods=['POST'])
 def mlmodels():
     in_text = request.form['text']
-    if loading_error:
-        party_result = os.getcwd()+' loaded '+str(num_loaded)
-    else:
-        def list_tostring(input_list):
-            return ' '.join(input_list)
-        def remove_stopwords(input_list):
-            return [w for w in input_list if not w in stop_words]
-        fun_input = list_tostring(remove_stopwords(word_tokenize(in_text)))
+    # if loading_error:
+    #     def list_tostring(input_list):
+    #         return '   '.join(input_list)
+    #     party_result = os.getcwd()+' loaded '+str(num_loaded)+'  '+list_tostring(os.listdir())
+    # else:
+    def list_tostring(input_list):
+        return ' '.join(input_list)
+    def remove_stopwords(input_list):
+        return [w for w in input_list if not w in stop_words]
+    fun_input = list_tostring(remove_stopwords(word_tokenize(in_text)))
 
-        X_pred = bigram_vectorizer.transform([fun_input])
-        X_pred = bigram_tf_idf_transformer.transform(X_pred)
-        result = sgd_classifier.predict(X_pred)
-        if result[0] == 'R':
-            party_result = 'Predicted Republican Tweet'
-        else:
-            party_result = 'Predicted Democrat Tweet  '
+    X_pred = bigram_vectorizer.transform([fun_input])
+    X_pred = bigram_tf_idf_transformer.transform(X_pred)
+    result = sgd_classifier.predict(X_pred)
+    if result[0] == 'R':
+        party_result = 'Predicted Republican Tweet'
+    else:
+        party_result = 'Predicted Democrat Tweet  '
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/database')
