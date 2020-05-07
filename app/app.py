@@ -16,13 +16,17 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 stop_words = set(stopwords.words('english'))
 
 loading_error = False
+num_loaded = 0
 try:
     # #temp_path = os.path.abspath('static/js/data/data_preprocessors/bigram_vectorizer.joblib')
-    bigram_vectorizer = load('static/js/data/data_preprocessors/bigram_vectorizer.joblib')
+    bigram_vectorizer = load('/app/static/js/data/data_preprocessors/bigram_vectorizer.joblib')
+    num_loaded+=1
     # #temp_path = os.path.abspath('./static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
-    bigram_tf_idf_transformer = load('static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
+    bigram_tf_idf_transformer = load('/app/static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
+    num_loaded+=1
     # #temp_path = os.path.abspath('./static/js/data/classifiers/sgd_classifier.joblib')
-    sgd_classifier = load('static/js/data/classifiers/sgd_classifier.joblib')
+    sgd_classifier = load('/app/static/js/data/classifiers/sgd_classifier.joblib')
+    num_loaded+=1
 except:
     loading_error=True
 
@@ -54,7 +58,7 @@ def my_form():
 def mlmodels():
     in_text = request.form['text']
     if loading_error:
-        party_result = os.getcwd()
+        party_result = os.getcwd()+' loaded '+str(num_loaded)
     else:
         def list_tostring(input_list):
             return ' '.join(input_list)
