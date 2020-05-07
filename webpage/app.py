@@ -62,7 +62,7 @@ def mlmodels():
         party_result = 'Predicted Republican Tweet'
     else:
         path_text = os.getcwd()
-        ls_text = os.command('ls')
+        ls_text = os.system('ls')
         party_result = 'Predicted Democrat Tweet  '+path_text+' '+ls_text
     return render_template('mlmodels.html', party_prediction = party_result)
 
