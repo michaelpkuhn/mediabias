@@ -100,9 +100,10 @@ def db_form():
 
 @app.route('/database', methods=['POST'])
 def db_query():
-    in_text = request.form['text']
+    in_text = request.form['text'].lower()
+    search_text = ''.join(in_text.split())
     #query = F"Select * from final_db where domain_name Like lower('%%{in_text}%%')"
-    query = F"Select * from final_db where domain_name Like '%%{in_text}%%'"
+    query = F"Select * from final_db where domain_name Like '%%{search_text}%%'"
 
     result = ''
 
