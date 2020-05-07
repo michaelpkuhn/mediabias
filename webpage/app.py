@@ -61,7 +61,8 @@ def mlmodels():
     if result[0] == 'R':
         party_result = 'Predicted Republican Tweet'
     else:
-        party_result = 'Predicted Democrat Tweet  '+os.getcwd()
+        path_text = os.getcwd()
+        party_result = 'Predicted Democrat Tweet  '+path_text
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/sitemap')
