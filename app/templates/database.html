@@ -19,8 +19,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a></li>
             <li class="nav-item">
                 <a class="nav-link" href="ranking">Ranking</a></li>
             <li class="nav-item">
@@ -29,6 +29,8 @@
                 <a class="nav-link" href="methodology">Methodology</a></li>
             <li class="nav-item">
                 <a class="nav-link" href="mlmodels">ML Models</a></li>
+            <li class="nav-item active">
+                <a class="nav-link" href="database">Search Media Scores<span class="sr-only">(current)</span></a></li>
             <li class="nav-item">
                 <a class="nav-link" href="sitemap">Site Map</a></li>
         </ul>
@@ -38,16 +40,41 @@
     <div class="container">
       <div class="row">
           <div class="col">
-              <h2 class="headers">Party predictor</h2>
+              <h2 class="headers">Media Score</h2>
               <p>
-                  Type in a media organization to find its DW-Equivalent Score:
+                  Type in a media organization's domain to find its DW-Equivalent Score:
               </p>
               <form method="POST">
                   <input name="text">
                   <input type="submit">
               </form>
-              {{media_org}}
           </div>
+      </div>
+      <div class ="row">
+          <table class="table">
+              <thead>
+                  <th>Domain Name</th>
+                  <th>Domain Count</th>
+                  <th>Nominate_dim1</th>
+                  <th>Nominate_dim2</th>
+                  <th>Dim1_StdDev</th>
+                  <th>Dim2_StdDev</th>
+                  <th>Dim1_StdErr</th>
+                  <th>Dim2_StdErr</th>
+              </thead>
+          {% for record in media_org %}
+            <tr>
+                <td>{{record[0]}}</td>
+                <td>{{record[1]}}</td>
+                <td>{{record[2]}}</td>
+                <td>{{record[3]}}</td>
+                <td>{{record[4]}}</td>
+                <td>{{record[5]}}</td>
+                <td>{{record[6]}}</td>
+                <td>{{record[7]}}</td>
+            </tr>
+          {% endfor %}
+        </table>
       </div>
   </div>
 </body>
