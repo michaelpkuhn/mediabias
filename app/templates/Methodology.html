@@ -20,15 +20,17 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a></li>
+                <a class="nav-link" href="/">Home</a></li>
             <li class="nav-item">
                 <a class="nav-link" href="ranking">Ranking</a></li>
             <li class="nav-item">
                 <a class="nav-link" href="classification">Classifications</a></li>
-            <li class="nav-item">
-                <a class="nav-link" href="methodology">Methodology</a></li>
+            <li class="nav-item active">
+                <a class="nav-link" href="methodology">Methodology<span class="sr-only">(current)</span></a></li>
             <li class="nav-item">
                 <a class="nav-link" href="mlmodels">ML Models</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="database">Search Media Scores</a></li>
             <li class="nav-item">
                 <a class="nav-link" href="sitemap">Site Map</a></li>
         </ul>
@@ -46,6 +48,13 @@
       <p>
         Using the DW-NOMINATE-Equivalent Scores, we assign the organizations into five groups using sklearn's <a href='https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification'>
         K-Nearest-Neighbors classification module.</a> The five groups are then labeled accordingly.
+      </p>
+      <h3>Purpose</h3>
+      <p>
+          There are many claims of media bias in our discourse. With the increasing polarization of our politics, each claim of bias can in turn be claimed to be biased. Therefore,
+          subjective claims of bias are inadequate claims of bias. No other project attempts to objectively categorize media bias. Similar projects use votes and editorial judgement
+          to approximate an objective categorization of bias. Despite the more formal structure of these projects, they fail to clear the objectivity hurdle as any other subjective
+          claim. This project clears this hurdle utilzing the DW-NOMINATE score and X years of congressional tweets. Therefore, this analysis provides substance to the media bias debate.
       </p>
       <h3>Limitations of this Analysis</h3>
       <p>
@@ -84,8 +93,6 @@
 <!-- <script src = "data/comm_dist.json"></script>
 <script src = "data/avg_hr_rides.json"></script>
 <script src = "data/trip_count.json"></script> -->
-<script src="static/js/dw_nom.js"></script>
-<script src="../static/js/dw_nom.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
