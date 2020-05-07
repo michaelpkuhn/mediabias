@@ -2,7 +2,6 @@ from flask import Flask, jsonify, render_template, redirect, make_response, json
 import os
 from joblib import load
 import subprocess
-
 # Tools to remove stopwords from tweets
 import nltk
 from nltk.corpus import stopwords
@@ -12,6 +11,16 @@ nltk.download('punkt')
 
 from sklearn.linear_model import SGDClassifier
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+
+#DB Imports
+import sqlalchemy.dialects.postgresql
+from flask_sqlalchemy import SQLAlchemy
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine, inspect
+
 
 stop_words = set(stopwords.words('english'))
 
@@ -31,8 +40,15 @@ try:
 except:
     loading_error=True
 
+
 app = Flask(__name__)
 app.config['DEBUG']= True
+
+#DATABASE SET UP
+uri = 'postgres://vigleotgdkofne:42870962558c95a8818d4a758b4e989db94e92654344ab44d26537f528a8bc81@ec2-34-195-169-25.compute-1.amazonaws.com:5432/d3cp995qbfoemo'
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
+db = SQLAlchemy(app)
+engine = db.engine
 
 
 @app.route('/')
@@ -75,6 +91,24 @@ def mlmodels():
         else:
             party_result = 'Predicted Democrat Tweet  '
     return render_template('mlmodels.html', party_prediction = party_result)
+
+@app.route('/database')
+def db_form():
+    return render_template('database.html')
+
+
+@app.route('/database', methods=['POST'])
+def db_query():
+    in_text = request.form['text']
+    #query = F"Select * from final_db where domain_name Like lower('%%{in_text}%%')"
+    query = F"Select * from final_db where domain_name Like '%%{in_text}%%'"
+
+    result = ''
+
+    result = engine.execute(query).fetchall()
+
+    return render_template('database.html', media_org=result)
+
 
 @app.route('/sitemap')
 def sitemap():
