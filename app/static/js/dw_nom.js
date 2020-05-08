@@ -57,7 +57,7 @@ d3.json(json_ref).then((json_data) => {
         }
     })
 
-    console.log(myChart.data)
+   // console.log(myChart.data)
 /*     var plot_width = 600;
     var plot_height = 600;
     var margin_l = 100;
@@ -102,54 +102,6 @@ d3.json(json_ref).then((json_data) => {
 })
 
 
-
-/* 
-Media Scalar
-
-json_ref = "../testtable.json"
-
-d3.json(json_ref).then((data) => {
-    var plot_width = 750;
-    var plot_height = 750;
-    var margin_l = 100;
-    var margin_r = 100;
-    function createTrace(dict, d_name, d_color){
-        var trace = {
-            x: dict.map(d => d.nominate_dim1),
-            y: dict.map(d => d.nominate_dim2),
-            hovertext: dict.map(d=> "Website: "+d.site+'<br>'+"Count: "+d.count),
-            type: "scatter",
-            mode: 'markers',
-            marker: {color: d_color, size: dict.map(d=>d.count/100)},
-            name: d_name
-    
-        }
-        console.log(dict.map(d=>d.size))
-        return trace
-    }
-
-    media_trace = createTrace(data, 'Media', 'Green')
-
-    var data = [media_trace]
-
-    var layout = {
-        width: plot_width,
-        height: plot_height,
-        margin: {l: margin_l, r: margin_r},
-        title: {
-            text: "DW NOMINATE Media"
-        },
-        yaxis: {title: "Inter-Party Differences Spectrum",
-                range: [-1,1]},
-        xaxis: {title: "Liberal-Conservative Spectrum",
-                range: [-1,1]},
-        hovermode:'closest'
-    }
-
-    Plotly.newPlot("media_dw", data, layout)
-})
- */
-
 json_ref = "static/js/data/mainmediaorgs3.json"
 
 function deep_copy(v1){
@@ -157,8 +109,132 @@ function deep_copy(v1){
     return v2
 }
 
-d3.json(json_ref).then((data) => {
-    var plot_width = 600+150;
+d3.json(json_ref).then((json_data) => {
+    var ctx = document.getElementById('dw_media_chart').getContext('2d');
+
+    var mediaChart = new Chart(ctx, {
+        type: 'scatter',
+        data:{
+            datasets:[{
+                label: 'default',
+                data: json_data.map(d => {
+                    point = {};
+                    point.x = d.nominate_dim1; 
+                    point.y = d.nominate_dim2;
+                    point.site = d.Site;
+                    return point}),
+                    backgroundColor: 'green'
+            }//,
+        //     {
+        //         label: 'Neutral Control',                
+        //         data: gop.map(d => {
+        //             point = {};
+        //             point.x = d.nominate_dim1; 
+        //             point.y = d.nominate_dim2;
+        //             point.bioname = d.bioname;
+        //             return point}),
+        //             backgroundColor: 'red'
+        //     },
+        //     {
+        //         label: 'Democrats Only',                
+        //         data: ind.map(d => {
+        //             point = {};
+        //             point.x = d.nominate_dim1; 
+        //             point.y = d.nominate_dim2;
+        //             point.bioname = d.bioname;
+        //             return point}),
+        //             backgroundColor: 'grey'
+        //     },
+        //     {
+        //     label: 'Republicans Only',                
+        //     data: ind.map(d => {
+        //         point = {};
+        //         point.x = d.nominate_dim1; 
+        //         point.y = d.nominate_dim2;
+        //         point.bioname = d.bioname;
+        //         return point}),
+        //         backgroundColor: 'grey'
+        // }
+    ]
+        },
+        options: {
+            tooltips:{
+                callbacks: {
+                    label: function(tooltipItem, data){
+                        //console.log(data.datasets)
+                        //console.log(data.datasets[0]['data'][tooltipItem['index']])
+                        let item = data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem.index];
+                        return ['('+item.y+item.x+')',item.site];
+                    }
+                }
+            },
+            scales:{
+                yAxes:[{ticks:{max:1,min:-1}}],
+                xAxes:[{ticks:{max:1,min:-1}}]
+            }
+        }
+    })
+
+    function addData(chart, label, data) {
+        chart.data.labels.push(label);
+        chart.data.datasets.push(data);
+        console.log(label,data)
+        chart.update({easing: 'linear'});
+    }
+    
+    function removeData(chart) {
+        chart.data.labels.pop();
+        chart.data.datasets.pop()
+        //console.log(chart.data)
+        chart.update();
+        //console.log('remove')
+    }
+    let twt_bias = {x: 0.104, y: 0.133}
+
+    let charts = {'default':{
+            label: 'default',
+            data: json_data.map(d => {
+                point = {};
+                point.x = d.nominate_dim1; 
+                point.y = d.nominate_dim2;
+                point.site = d.Site;
+                return point}),
+                backgroundColor: 'green'
+        },
+        'control':{
+                label: 'control',
+                data: json_data.map(d => {
+                    point = {};
+                    point.x = d.nominate_dim1 + twt_bias.x; 
+                    point.y = d.nominate_dim2 + twt_bias.y;
+                    point.site = d.Site;
+                    return point}),
+                    backgroundColor: 'green'
+    }}
+
+    var mySelect = document.getElementById('charts');
+
+    mySelect.onchange = function(){
+        console.log('1:',mediaChart.data)
+        chart_opt = mySelect.value
+        current = mediaChart.data.datasets[0].label
+        if (chart_opt === current){
+            console.log('True')
+            return null
+        }
+        else{
+            removeData(mediaChart)
+
+            let data = charts[chart_opt]
+            //console.log(data)
+            
+            addData(mediaChart, 'Media Chart', data)
+            //console.log('False')
+        }
+        console.log('2',mediaChart.data)
+    }
+
+/*     var plot_width = 600+150;
     var plot_height = 600;
     var margin_l = 250;
     var margin_r = 100;
@@ -352,5 +428,5 @@ d3.json(json_ref).then((data) => {
     //Does not rescale Dem or GOP error
       Plotly.restyle("media_dw_focused", "marker.size", [update], [0]);
 
-    });
+    }); */
 })
