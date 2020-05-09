@@ -21,6 +21,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from sqlalchemy import create_engine, inspect
 
+from ccdf_data import x_data
+from ccdf_data import y_data
 
 stop_words = set(stopwords.words('english'))
 
@@ -83,14 +85,28 @@ def mlmodels():
     def remove_stopwords(input_list):
         return [w for w in input_list if not w in stop_words]
     fun_input = list_tostring(remove_stopwords(word_tokenize(in_text)))
+    def get_accuracy(input_dec,cdf_x,cdf_y):
+        y_len_minus_two = len(cdf_y)-2
+        abs_input_dec = abs(input_dec)
+        if abs_input_dec <= cdf_x[0]:
+            return 'highly unreliable'
+        elif abs_input_dec >= cdf_x[len(x_data)-1]:
+            return 'highly reliable'
+        else:
+            j = 0
+            while (abs_input_dec>=cdf_x[j])&(j<y_len_minus_two):
+                j=j+1
+            return 'estimated probability of error:  '+str(cdf_y[j])+'.'
 
     X_pred = bigram_vectorizer.transform([fun_input])
     X_pred = bigram_tf_idf_transformer.transform(X_pred)
     result = sgd_classifier.predict(X_pred)
+    dec = sgd_classifier.decision_function(X_pred)
     if result[0] == 'R':
-        party_result = 'Predicted Republican Tweet'
+        party_result = 'Predicted Republican Tweet - '
     else:
-        party_result = 'Predicted Democrat Tweet  '
+        party_result = 'Predicted Democrat Tweet - '
+    party_result = party_result + get_accuracy(dec,x_data,y_data)
     return render_template('mlmodels.html', party_prediction = party_result)
 
 @app.route('/database')
