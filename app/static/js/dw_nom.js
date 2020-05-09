@@ -35,62 +35,20 @@ d3.json(json_ref).then((data) => {
         height: plot_height,
         margin: {l: margin_l, r: margin_r},
         title: {
-            text: "DW NOMINATE 116th Congress"
+            text: "DW NOMINATE 116th Congress",
+            font:{
+                family: 'Times, serif'
+            }
         },
         yaxis: {title: "Inter-Party Differences Spectrum"},
         xaxis: {title: "Liberal-Conservative Spectrum"},
-        hovermode:'closest'
+        hovermode:'closest',
+        paper_bgcolor: 'rgb(247,241,219)',
+        plot_bgcolor: 'rgb(247,241,219)'
     }
 
     Plotly.newPlot("dw", data, layout)
 })
-
-/* 
-Media Scalar
-
-json_ref = "../testtable.json"
-
-d3.json(json_ref).then((data) => {
-    var plot_width = 750;
-    var plot_height = 750;
-    var margin_l = 100;
-    var margin_r = 100;
-    function createTrace(dict, d_name, d_color){
-        var trace = {
-            x: dict.map(d => d.nominate_dim1),
-            y: dict.map(d => d.nominate_dim2),
-            hovertext: dict.map(d=> "Website: "+d.site+'<br>'+"Count: "+d.count),
-            type: "scatter",
-            mode: 'markers',
-            marker: {color: d_color, size: dict.map(d=>d.count/100)},
-            name: d_name
-    
-        }
-        console.log(dict.map(d=>d.size))
-        return trace
-    }
-
-    media_trace = createTrace(data, 'Media', 'Green')
-
-    var data = [media_trace]
-
-    var layout = {
-        width: plot_width,
-        height: plot_height,
-        margin: {l: margin_l, r: margin_r},
-        title: {
-            text: "DW NOMINATE Media"
-        },
-        yaxis: {title: "Inter-Party Differences Spectrum",
-                range: [-1,1]},
-        xaxis: {title: "Liberal-Conservative Spectrum",
-                range: [-1,1]},
-        hovermode:'closest'
-    }
-
-    Plotly.newPlot("media_dw", data, layout)
-})
- */
 
 json_ref = "static/js/data/mainmediaorgs3.json"
 
@@ -214,8 +172,13 @@ d3.json(json_ref).then((data) => {
             height: plot_height,
             margin: {l: margin_l, r: margin_r},
             title: {
-                text: "DW NOMINATE Media"
+                text: "DW NOMINATE Media",
+                font:{
+                    family: 'Times, serif'
+                }
             },
+            paper_bgcolor: 'rgb(247,241,219)',
+            plot_bgcolor: 'rgb(247,241,219)',
             yaxis: {title: "Inter-Party Differences Spectrum",
                     range: [-1,1]},
             xaxis: {title: "Liberal-Conservative Spectrum",
@@ -261,16 +224,6 @@ d3.json(json_ref).then((data) => {
             ]
             }],
             annotations: def_annotation
-            // annotations: [{
-            //     xref: 'paper',
-            //     yref: 'paper',
-            //     x: -0.2,
-            //     xanchor: 'right',
-            //     y: .5,
-            //     yanchor: 'bottom',
-            //     text: 'Standard view',
-            //     showarrow: false
-            // }]
         };
 
     Plotly.newPlot("media_dw_focused", traces, layout)
