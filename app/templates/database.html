@@ -42,10 +42,13 @@
               <p>
                   Type in a media organization's domain to find its DW-Equivalent Score:
               </p>
-              <form method="POST">
-                  <input name="text">
-                  <input type="submit">
+              <textarea rows="1" cols="80" name="text" form="usrform">Enter media organization's domain here...</textarea>
+              <form method="POST" id="usrform">
+                  <input type="submit" value="Run query">
               </form>
+                <p>
+                    {{query_string_out}}
+                </p>
           </div>
       </div>
       <div class ="row table-responsive">
