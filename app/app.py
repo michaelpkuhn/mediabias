@@ -123,15 +123,17 @@ def db_form():
 
 @app.route('/database', methods=['POST'])
 def db_query():
-    in_text = request.form['text'].lower()
+    query_string = request.form['text']
+    in_text = query_string.lower()
     search_text = ''.join(in_text.split())
     query = F"Select * from final_db where domain_name Like '%%{search_text}%%'"
 
     result = ''
-
+    query_string_out = ''
     result = engine.execute(query).fetchall()
+    query_string_out = 'You queried: \"'+query_string+'\"'
 
-    return render_template('database.html', media_org=result)
+    return render_template('database.html', media_org=result, query_string_out = query_string_out)
 
 
 @app.route('/sitemap')
