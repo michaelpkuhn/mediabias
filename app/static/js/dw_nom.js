@@ -39,7 +39,17 @@ d3.json(json_ref).then((data) => {
         },
         yaxis: {title: "Inter-Party Differences Spectrum"},
         xaxis: {title: "Liberal-Conservative Spectrum"},
-        hovermode:'closest'
+        hovermode:'closest',
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        xaxis:
+            {
+                gridcolor: 'rgba(217, 211, 189, 1)'
+            },
+        yaxis:
+        {
+            gridcolor: 'rgba(217, 211, 189, 1)'
+        }
     }
 
     Plotly.newPlot("dw", data, layout)
@@ -47,9 +57,7 @@ d3.json(json_ref).then((data) => {
 
 /* 
 Media Scalar
-
 json_ref = "../testtable.json"
-
 d3.json(json_ref).then((data) => {
     var plot_width = 750;
     var plot_height = 750;
@@ -69,11 +77,8 @@ d3.json(json_ref).then((data) => {
         console.log(dict.map(d=>d.size))
         return trace
     }
-
     media_trace = createTrace(data, 'Media', 'Green')
-
     var data = [media_trace]
-
     var layout = {
         width: plot_width,
         height: plot_height,
@@ -87,7 +92,6 @@ d3.json(json_ref).then((data) => {
                 range: [-1,1]},
         hovermode:'closest'
     }
-
     Plotly.newPlot("media_dw", data, layout)
 })
  */
@@ -222,6 +226,16 @@ d3.json(json_ref).then((data) => {
                     range: [-1,1]},
             hovermode:'closest',
             legend: {x: -0.4, y:1},
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis:
+            {
+                gridcolor: 'rgba(217, 211, 189, 1)'
+            },
+            yaxis:
+            {
+                gridcolor: 'rgba(217, 211, 189, 1)'
+            },
             updatemenus: [{
                 x: -0.1,
                 y: 0.8,
