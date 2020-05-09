@@ -164,15 +164,18 @@
 \usepackage{textcomp} %For adding < >
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{mdframed}
 
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0em}{#1} %add this after #1 to include section number\ \thesection}
 
 
 \newminted[pythoncode]{python}{frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=Black,fontsize=\footnotesize,linenos}
 \newminted[sqlcode]{sql}{frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=Black,fontsize=\footnotesize,linenos}
+\newminted[httpcode]{html}{frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=Black,fontsize=\footnotesize,linenos}
 
 \newcommand{\mintedpython}[1]{\inputminted[frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=Black,fontsize=\footnotesize,linenos]{python}{#1}}
 \newcommand{\mintedsql}[1]{\inputminted[frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=Black,fontsize=\footnotesize,linenos]{sql}{#1}}
+\newcommand{\mintedhttp}[1]{\inputminted[frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=Black,fontsize=\footnotesize,linenos]{html}{#1}}
 
 \begin{document}
 
@@ -231,6 +234,7 @@ May 9, 2020}
 \begin{itemize}[\label{}]
 \item Primary: Find objective way to score bias in 36 selected news organizations.
 \item Secondary: Estimate the political bias of a given tweet.
+\item Secondary: Heroku deployment.
 \end{itemize}
 \end{footnotesize}
 
@@ -314,9 +318,28 @@ Test for normality failed (couldn't use prediction interval)
 
 \clearpage
 
+
 Empirical CDF
 
 \clearpage
+
+\hspace*{\fill}
+
+{\large Passing user input to flask app}
+
+\hspace*{\fill}
+\scalebox{0.6}{
+\begin{minipage}{1.6\textwidth}
+%\definecolor{bg}{rgb}{0,0,0}
+%\begin{mdframed}[backgroundcolor=bg]
+\mintedhttp{html_snippet.html}
+%\end{mdframed}
+\end{minipage}
+}
+\hspace*{\fill}
+
+\clearpage
+
 
 {\large Heroku deployment features}
 
@@ -326,6 +349,21 @@ Empirical CDF
 \item Search Media Scores Page - text box to search SQL data base for media domain.
 \end{itemize}
 
+\clearpage
+
+{\large Heroku difficulty}
+
+Flask app, \texttt{app.py}, is in a separate directory from heroku config files. This made it difficult to load the scikit learn models into the app.  The issue was resolved using by printing information to the page on the current working directory using the os library if the models failed to run:
+
+
+\hspace*{\fill}
+\scalebox{0.6}{
+\begin{minipage}{1.6\textwidth}{
+\mintedpython{heroku_trouble.py}
+}
+\end{minipage}
+}
+\hspace*{\fill}
 
 \clearpage
 
