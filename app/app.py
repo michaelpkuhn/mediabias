@@ -21,8 +21,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from sqlalchemy import create_engine, inspect
 
-from .ccdf_data import x_data
-from .ccdf_data import y_data
+# from .ccdf_data import x_data
+# from .ccdf_data import y_data
 
 stop_words = set(stopwords.words('english'))
 
@@ -31,19 +31,25 @@ num_loaded = 0
 temp_path = ''
 try:
     # Works on heroku
+    from .ccdf_data import x_data
+    from .ccdf_data import y_data
     bigram_vectorizer = load('app/static/js/data/data_preprocessors/bigram_vectorizer.joblib')
     bigram_tf_idf_transformer = load('app/static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
     sgd_classifier = load('app/static/js/data/classifiers/sgd_classifier.joblib')
 except:
     # Works locally
-    loading_error=True
-    bigram_vectorizer = load('./static/js/data/data_preprocessors/bigram_vectorizer.joblib')
-    bigram_tf_idf_transformer = load('./static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
-    sgd_classifier = load('./static/js/data/classifiers/sgd_classifier.joblib')
+    from ccdf_data import x_data
+    from ccdf_data import y_data
+    #loading_error=True
+    bigram_vectorizer = load('./app/static/js/data/data_preprocessors/bigram_vectorizer.joblib')
+    bigram_tf_idf_transformer = load('./app/static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
+    sgd_classifier = load('./app/static/js/data/classifiers/sgd_classifier.joblib')
 
 
 app = Flask(__name__)
 app.config['DEBUG']= True
+#Disable deprecation warning and overhead
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #DATABASE SET UP
 uri = 'postgres://vigleotgdkofne:42870962558c95a8818d4a758b4e989db94e92654344ab44d26537f528a8bc81@ec2-34-195-169-25.compute-1.amazonaws.com:5432/d3cp995qbfoemo'
@@ -96,7 +102,7 @@ def mlmodels():
             j = 0
             while (abs_input_dec>=cdf_x[j])&(j<y_len_minus_two):
                 j=j+1
-            return 'estimated probability of error:  '+str(cdf_y[j]*100)+'%.'
+            return 'estimated probability of error: {0:.2f}%.'.format(cdf_y[j]*100)
 
     X_pred = bigram_vectorizer.transform([fun_input])
     X_pred = bigram_tf_idf_transformer.transform(X_pred)

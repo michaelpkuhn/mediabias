@@ -13,14 +13,14 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Media Bias</a>
+        <a class="navbar-brand" href="/">Media Bias</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a></li>
             <li class="nav-item">
                 <a class="nav-link" href="about">About</a></li>
             <li class="nav-item">
@@ -38,10 +38,11 @@
     
 <div class='container'>
 <h2>Classifications</h2>
-<img style="border: 0.25em black solid; display:block; margin-left: auto; margin-right: auto;" src='static/images/5class.png'>
+<img style="border: 0.25em black solid; display:block; margin-left: auto; margin-right: auto; max-width: 80%;" src='static/images/5class.png'>
 <p>Using the table below, we use sklearn's K-Nearest Neighbor classifier to label the organizations below as left, left-leaning, moderate, right-leaning and right.
   For more information, see our <a href="methodology">methodology</a>!
 </p>
+<div class='table-responsive'>
 <table border="1" class="table">
   <thead>
     <tr style="text-align: right;">
@@ -314,6 +315,7 @@
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 </body>
 
