@@ -21,8 +21,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from sqlalchemy import create_engine, inspect
 
-from .ccdf_data import x_data
-from .ccdf_data import y_data
+
 
 stop_words = set(stopwords.words('english'))
 
@@ -31,15 +30,19 @@ num_loaded = 0
 temp_path = ''
 try:
     # Works on heroku
+    from .ccdf_data import x_data
+    from .ccdf_data import y_data
     bigram_vectorizer = load('app/static/js/data/data_preprocessors/bigram_vectorizer.joblib')
     bigram_tf_idf_transformer = load('app/static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
     sgd_classifier = load('app/static/js/data/classifiers/sgd_classifier.joblib')
 except:
     # Works locally
-    loading_error=True
-    bigram_vectorizer = load('./static/js/data/data_preprocessors/bigram_vectorizer.joblib')
-    bigram_tf_idf_transformer = load('./static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
-    sgd_classifier = load('./static/js/data/classifiers/sgd_classifier.joblib')
+    from ccdf_data import x_data
+    from ccdf_data import y_data
+    #loading_error=True
+    bigram_vectorizer = load('./app/static/js/data/data_preprocessors/bigram_vectorizer.joblib')
+    bigram_tf_idf_transformer = load('./app/static/js/data/data_preprocessors/bigram_tf_idf_transformer.joblib')
+    sgd_classifier = load('./app/static/js/data/classifiers/sgd_classifier.joblib')
 
 
 app = Flask(__name__)
