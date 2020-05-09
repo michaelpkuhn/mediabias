@@ -28,6 +28,16 @@ p{
     font-size: 1.25em;
 }
 
-.chart{
-    max-width: 100%;
+.mobilechart{
+    display: none;
+}
+
+@media (max-width:992px){
+    .mobilechart{
+        display: block;
+        max-width: 100%;
+    }
+    .chart{
+        display: none;
+    }
 }
