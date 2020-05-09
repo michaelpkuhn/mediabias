@@ -48,6 +48,8 @@ except:
 
 app = Flask(__name__)
 app.config['DEBUG']= True
+#Disable deprecation warning and overhead
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #DATABASE SET UP
 uri = 'postgres://vigleotgdkofne:42870962558c95a8818d4a758b4e989db94e92654344ab44d26537f528a8bc81@ec2-34-195-169-25.compute-1.amazonaws.com:5432/d3cp995qbfoemo'
