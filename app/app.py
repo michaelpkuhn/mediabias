@@ -21,8 +21,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from sqlalchemy import create_engine, inspect
 
-from ccdf_data import x_data
-from ccdf_data import y_data
+from .ccdf_data import x_data
+from .ccdf_data import y_data
 
 stop_words = set(stopwords.words('english'))
 
