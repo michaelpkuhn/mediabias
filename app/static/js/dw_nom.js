@@ -188,21 +188,17 @@ d3.json(json_ref).then((data) => {
             paper_bgcolor: 'rgb(247,241,219)',
             plot_bgcolor: 'rgb(247,241,219)',
             yaxis: {title: "Inter-Party Differences Spectrum",
-                    range: [-1,1]},
+                    range: [-1,1],
+                    gridcolor: 'rgba(217, 211, 189, 1)'
+                },
             xaxis: {title: "Liberal-Conservative Spectrum",
-                    range: [-1,1]},
+                    range: [-1,1],
+                    gridcolor: 'rgba(217, 211, 189, 1)'
+                },
             hovermode:'closest',
             legend: {x: -0.4, y:1},
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
-            xaxis:
-            {
-                gridcolor: 'rgba(217, 211, 189, 1)'
-            },
-            yaxis:
-            {
-                gridcolor: 'rgba(217, 211, 189, 1)'
-            },
             updatemenus: [{
                 x: -0.1,
                 y: 0.8,
