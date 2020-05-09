@@ -55,3 +55,7 @@ p{
         display: none;
     }
 }
+
+.form_input{
+    maxwidth: 100%;
+    }
