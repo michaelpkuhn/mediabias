@@ -307,20 +307,21 @@ SQL Schema
 
 ML Model
 
+\vspace*{-10pt}
 \begin{enumerate}
 \item Use nltk to remove stopwords from tweets.
 \item Tweets are vectorized using several schemes.
 \item Best performing scheme is selected for fine tuning.
-\item End result is Stochastic Gradient Decent Model with X score.
+\item End result is Stochastic Gradient Decent Model with 0.76057 score on large selection of tweets.
 \item Empirical CDF of errors in large test used to estimate probability of making an error.
 \end{enumerate}
 
 \clearpage
 
-Test for normality failed (couldn't use prediction interval)
+Test for normality failed - p-value near zero (couldn't use prediction interval)
 
 \hspace*{\fill}
-\includegraphics[scale=0.5]{histogram.png}
+\includegraphics[scale=0.45]{histogram.png}
 \hspace*{\fill}
 
 \clearpage
@@ -328,7 +329,9 @@ Test for normality failed (couldn't use prediction interval)
 
 Empirical Complementary CDF
 
-\includegraphics[scale=0.5]{complementary_cdf.png}
+\hspace*{\fill}
+\includegraphics[scale=0.45]{complementary_cdf.png}
+\hspace*{\fill}
 
 \clearpage
 
