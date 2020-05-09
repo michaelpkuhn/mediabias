@@ -6,6 +6,7 @@ body{
 
 .container {
     background-color: #F7F1DB;
+    border: 0.25em #9a8562 solid;
     padding-bottom: 2vh;
 }
 
