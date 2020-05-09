@@ -96,7 +96,7 @@ def mlmodels():
             j = 0
             while (abs_input_dec>=cdf_x[j])&(j<y_len_minus_two):
                 j=j+1
-            return 'estimated probability of error:  '+str(cdf_y[j])+'.'
+            return 'estimated probability of error:  '+str(cdf_y[j]*100)+'%.'
 
     X_pred = bigram_vectorizer.transform([fun_input])
     X_pred = bigram_tf_idf_transformer.transform(X_pred)
