@@ -18,6 +18,10 @@ h4{
     text-decoration: underline;
 }
 
+.nav-link{
+    font-size: 1.25em;
+}
+
 .navbar{
     background-color: #F1E2C4;
     margin-bottom: 2vh;
