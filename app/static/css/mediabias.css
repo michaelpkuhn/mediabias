@@ -14,8 +14,20 @@ h1, h2, h3, h4, h5, h6{
     font-family: Times, serif;
 }
 
+h4{
+    text-decoration: underline;
+}
+
 .navbar{
     background-color: #F1E2C4;
     margin-bottom: 2vh;
     font-family: serif;
+}
+
+p{
+    font-size: 1.25em;
+}
+
+.chart{
+    max-width: 100%;
 }

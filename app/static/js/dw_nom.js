@@ -55,7 +55,9 @@ d3.json(json_ref).then((data) => {
         }
     }
 
-    Plotly.newPlot("dw", data, layout)
+    var config = {responsive: true}
+    
+    Plotly.newPlot("dw", data, layout, config)
 })
 
 json_ref = "static/js/data/mainmediaorgs3.json"
@@ -239,8 +241,10 @@ d3.json(json_ref).then((data) => {
             }],
             annotations: def_annotation
         };
-
-    Plotly.newPlot("media_dw_focused", traces, layout)
+    
+    var config = {responsive: true}
+    
+    Plotly.newPlot("media_dw_focused", traces, layout, config)
 
     //Scales Error Circles
     myPlot.on("plotly_relayout", function(eventdata) {
