@@ -76,7 +76,7 @@ def method():
 
 @app.route('/mlmodels')
 def my_form():
-    return render_template('mlmodels.html',party_prediction = '')
+    return render_template('mlmodels.html',party_prediction = '', in_text='')
 
 @app.route('/mlmodels', methods=['POST'])
 def mlmodels():
@@ -112,8 +112,9 @@ def mlmodels():
         party_result = 'Predicted Republican Tweet - '
     else:
         party_result = 'Predicted Democrat Tweet - '
+    in_text = 'Querried tweet:  '+in_text
     party_result = party_result + get_accuracy(dec,x_data,y_data)
-    return render_template('mlmodels.html', party_prediction = party_result)
+    return render_template('mlmodels.html', in_text = in_text, party_prediction = party_result)
 
 @app.route('/database')
 def db_form():

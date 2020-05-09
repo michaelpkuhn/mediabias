@@ -41,11 +41,21 @@
                 <p>
                     Type in a tweet to get a prediction of tweeters political party.
                 </p>
-                <form method="POST">
+                <!-- <form method="POST">
                     <input name="text">
                     <input type="submit">
-                </form>
-                {{party_prediction}}
+                </form> -->
+                    <textarea rows="4" cols="100" name="text" form="usrform">Enter tweet here...</textarea>
+                    <form method="POST" id="usrform">
+                        <input type="submit" value="Run ML model">
+                    </form>
+                    
+                <p>
+                    {{in_text}}
+                </p>
+                <p>
+                    {{party_prediction}}
+                </p>                
             </div>
         </div>
     </div>
