@@ -176,6 +176,61 @@ d3.json(json_ref).then((data) => {
         let gop_annotation = deep_copy(def_annotation)
         gop_annotation[0].text = 'Republican Filter'
 
+        var background_shapes = [{layer: 'below',
+        xref: 'paper',
+        yref: 'paper',
+        x0: 0,
+        x1: 0.4,
+        y0: 0,
+        y1: 1,
+        type: 'rect',
+        opacity: 0.75,
+        visible: false,
+        fillcolor: 'blue'},
+       {layer: 'below',
+        xref: 'paper',
+        yref: 'paper',
+        x0: 0.2,
+        x1: 0.4,
+        y0: 0,
+        y1: 1,
+        type: 'rect',
+        opacity: 0.75,
+        visible: false,
+        fillcolor: 'lightblue'},
+       {layer: 'below',
+        xref: 'paper',
+        yref: 'paper',
+        x0: 0.4,
+        x1: 0.6,
+        y0: 0,
+        y1: 1,
+        type: 'rect',
+        opacity: 0.75,
+        visible: false,
+        fillcolor: 'grey'},
+       {layer: 'below',
+        xref: 'paper',
+        yref: 'paper',
+        x0: 0.6,
+        x1: 0.8,
+        y0: 0,
+        y1: 1,
+        type: 'rect',
+        opacity: 0.75,
+        visible: false,
+        fillcolor: 'pink'},
+       {layer: 'below',
+        xref: 'paper',
+        yref: 'paper',
+        x0: 0.8,
+        x1: 1,
+        y0: 0,
+        y1: 1,
+        type: 'rect',
+        opacity: 0.75,
+        visible: false,
+        fillcolor: 'red'}]
 
         var layout = {
             width: plot_width,
@@ -215,6 +270,14 @@ d3.json(json_ref).then((data) => {
                 },
                 {
                     method: 'update',
+                    args: [{'visible': [true, true, false, false, false, false,
+                                        false, false]},
+                            {'annotations': def_annotation},
+                                    ],
+                    label: 'Overall w/ Background'
+                },
+                {
+                    method: 'update',
                     args: [{'visible': [false, false, true, true, false, false,
                                         false, false]},
                             {'annotations': control_annotation}
@@ -239,12 +302,11 @@ d3.json(json_ref).then((data) => {
                 }
             ]
             }],
-            annotations: def_annotation
+            annotations: def_annotation,
+            shapes: background_shapes
         };
-    
-    var config = {responsive: true}
-    
-    Plotly.newPlot("media_dw_focused", traces, layout, config)
+        
+    Plotly.newPlot("media_dw_focused", traces, layout)
 
     //Scales Error Circles
     myPlot.on("plotly_relayout", function(eventdata) {
@@ -266,4 +328,6 @@ d3.json(json_ref).then((data) => {
       Plotly.restyle("media_dw_focused", "marker.size", [update], [0]);
 
     });
+
+    myPlot.on("backgroundChecked")
 })
