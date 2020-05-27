@@ -301,7 +301,20 @@ d3.json(json_ref).then((data) => {
                     label: 'Republicans-Only'
                 }
             ]
-            }],
+            },
+        {  
+            x: -0.1,
+            y: 0.875,
+            yanchor: 'top',
+            buttons: [
+                {method: 'restyle',
+                args: [],
+                label: 'Background Off'},
+                {method: 'restyle',
+                args: [],
+                label: 'Background On'}
+            ]
+        }],
             annotations: def_annotation,
             shapes: background_shapes
         };
@@ -328,6 +341,4 @@ d3.json(json_ref).then((data) => {
       Plotly.restyle("media_dw_focused", "marker.size", [update], [0]);
 
     });
-
-    myPlot.on("backgroundChecked")
 })
