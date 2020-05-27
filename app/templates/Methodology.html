@@ -53,7 +53,7 @@
           There are many claims of media bias in our discourse. With the increasing polarization of our politics, each claim of bias can in turn be claimed to be biased. Therefore,
           subjective claims of bias are inadequate claims of bias. No other project attempts to objectively categorize media bias. Similar projects use votes and editorial judgement
           to approximate an objective categorization of bias. Despite the more formal structure of these projects, they fail to clear the objectivity hurdle as any other subjective
-          claim. This project clears this hurdle utilzing the DW-NOMINATE score and two years of congressional tweets. Therefore, this analysis provides substance to the media bias debate.
+          claim. This project clears this hurdle utilizing the DW-NOMINATE score and two years of congressional tweets. Therefore, this analysis provides substance to the media bias debate.
       </p>
       <h3>Choosing The Classification Method</h3>
       <h4>Data-Dependent Classifiers</h4>
@@ -63,13 +63,32 @@
         a consequence of this equitable binning, the classifier loses the irregular partisanship demonstrated by the DW-NOMINATE scores of the current congress and thereby mischaracterizes
         news organization bias. Before discussing our solution to this issue, we will analyze the data dependent methods we utilized.
       </p>
-      <h5>K-Nearest Neighbors</h5>
-      <p></p>
+      <h5>K-Nearest Neighbors (KNN)</h5>
+      <img class='image' src='static/images/5class.png'>
+      <p>
+        Our original rankings were based on this method. We only analyzed 36 media organizations. The limited sample size in this initial analysis amplified the problems 
+        inherent in data-dependent classification. If we were to add an additional 4 media organizations, and they all further to the left, the ratings for the original organizations
+        would shift to the right.
+      </p>
+      <img class='image' src='static/images/knn_overload.png'>
+      <p>
+        To address the concern brought by the small sample size, I attempted to run the K-Nearest Neighbor model on the entire dataset. As seen above, this did not work.
+      </p>
       <h5>K-Means</h5>
-      <p></p>
-      <h5>Kernel Density Estimation</h5>
-      <p></p>
+      <img class='image' src='static/images/kmeans.png'>
+      <p>
+        In response to the failure of KNN to model the entire dataset, we pivoted to the K-Means method. This was able to classify our data, however the classifications included
+        significant overlap on the X-Axis. This lead to unintuitive classifications, since the y axis represents more abstract inner-party differences on the DW-NOMINATE scale.
+      </p>
+      <h5>Kernel Density Estimation (KDE)</h5>
+      <img class='image' src='static/images/kde.png'>
+      <p>
+        We then attempted to make the classification based on the x-axis alone, since it represents the more intuitive liberal-conservative political spectrum. Once we ran our
+        KDE, we determined the inflection points using numpy's derivative and polyfit functions. After filtering out complex numbers and the four insignificant inflections at the very
+        beginning of the plot, we realized this method faced the same problem as the rest of the data-dependent methods. Therefore, we decided to use a data-independent classifier.
+      </p>
       <h4>Data-Independent Classifier</h4>
+      <img class='image' src='static/images/fixed_bins.png'>
       <p>
         The DW-NOMINATE scores are themselves a data-independent metric of ideology. Therefore, we created 5 bins of equal width along the DW-NOMINATE-Equivalent X-Axis (the axis that
         most closely represents the traditional liberal-conservative ideological spectrum). The challenge with this approach is that it considers organizations on the right as more
@@ -85,7 +104,7 @@
         to overweight liberal bias.
         </p>
         <p>
-        We control for this overweighting in our Neutral Control model. This model simply shifts the DW-NOMINATE-Equivalent score by a neutral domain's Equivalant score. We used the
+        We control for this overweighting in our Neutral Control model. This model simply shifts the DW-NOMINATE-Equivalent score by a neutral domain's Equivalent score. We used the
         calculated score for "www.twitter.com" to make this adjustment. Twitter is the most common domain found in congressional tweets: retweets are considered links to twitter. 
         We do not expect any bias associated with linking to twitter. Therefore, it serves as the most appropriate control score.
         </p>
@@ -112,9 +131,6 @@
 <footer>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js"></script>
-<!-- <script src = "data/comm_dist.json"></script>
-<script src = "data/avg_hr_rides.json"></script>
-<script src = "data/trip_count.json"></script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
