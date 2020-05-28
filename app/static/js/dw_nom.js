@@ -180,12 +180,13 @@ d3.json(json_ref).then((data) => {
         xref: 'paper',
         yref: 'paper',
         x0: 0,
-        x1: 0.4,
+        x1: 0.2,
         y0: 0,
         y1: 1,
         type: 'rect',
         opacity: 0.75,
-        visible: false,
+        //visible: false,
+        visible: true,        
         fillcolor: 'blue'},
        {layer: 'below',
         xref: 'paper',
@@ -196,7 +197,8 @@ d3.json(json_ref).then((data) => {
         y1: 1,
         type: 'rect',
         opacity: 0.75,
-        visible: false,
+        //visible: false,
+        visible: true,
         fillcolor: 'lightblue'},
        {layer: 'below',
         xref: 'paper',
@@ -207,7 +209,8 @@ d3.json(json_ref).then((data) => {
         y1: 1,
         type: 'rect',
         opacity: 0.75,
-        visible: false,
+        //visible: false,
+        visible: true,
         fillcolor: 'grey'},
        {layer: 'below',
         xref: 'paper',
@@ -218,7 +221,8 @@ d3.json(json_ref).then((data) => {
         y1: 1,
         type: 'rect',
         opacity: 0.75,
-        visible: false,
+        //visible: false,
+        visible: true,
         fillcolor: 'pink'},
        {layer: 'below',
         xref: 'paper',
@@ -229,7 +233,8 @@ d3.json(json_ref).then((data) => {
         y1: 1,
         type: 'rect',
         opacity: 0.75,
-        visible: false,
+        //visible: false,
+        visible: true,
         fillcolor: 'red'}]
 
         var layout = {
@@ -270,14 +275,6 @@ d3.json(json_ref).then((data) => {
                 },
                 {
                     method: 'update',
-                    args: [{'visible': [true, true, false, false, false, false,
-                                        false, false]},
-                            {'annotations': def_annotation},
-                                    ],
-                    label: 'Overall w/ Background'
-                },
-                {
-                    method: 'update',
                     args: [{'visible': [false, false, true, true, false, false,
                                         false, false]},
                             {'annotations': control_annotation}
@@ -306,39 +303,95 @@ d3.json(json_ref).then((data) => {
             x: -0.1,
             y: 0.875,
             yanchor: 'top',
+            //type: 'buttons',
             buttons: [
-                {method: 'restyle',
-                args: [],
-                label: 'Background Off'},
-                {method: 'restyle',
-                args: [],
-                label: 'Background On'}
+                {args: ['shapes', []],
+                label: 'Background Off',
+                method: 'relayout'},
+                {args: ['shapes', background_shapes],
+                label: 'Background On',
+                method: 'relayout'}
             ]
         }],
             annotations: def_annotation,
-            shapes: background_shapes
+            shapes: background_shapes.map(function(d){
+                d.visible = false;
+                return (d)
+            }
+                )
         };
         
+    
     Plotly.newPlot("media_dw_focused", traces, layout)
+
+    // function updateShapes(x1, x2){
+    //     x1 = (x1+1)/2;
+    //     x2 = (x2+1)/2;
+    //     console.log('x1', x1, 'x2', x2)
+    //     //console.log(myPlot.layout.shapes)
+    //     shapes_list = myPlot.layout.shapes
+    //     let i = 0;
+    //     for (shape of shapes_list){
+    //         console.log(i)
+    //         i += 1;
+    //         diff1 = shape.x0 - x1 + (0.2*i)
+    //         diff2 = shape.x1 - x2 + (0.2*i)
+            
+    //         console.log('x1 difference', shape.x0 - x1)
+    //         console.log('x2 difference', shape.x1 - x2)
+            
+
+    //     }
+    // }
 
     //Scales Error Circles
     myPlot.on("plotly_relayout", function(eventdata) {
+        //console.log('relayout')
         var update = []
-        if (eventdata["xaxis.range[1]"] !== undefined) {
-        console.log('If: ', eventdata['xaxis.range[1]'])
+        let x1 = eventdata['xaxis.range[0]']
+        let x2 = eventdata['xaxis.range[1]']
+
+        if (x2 !== undefined) {
+        console.log('If. x1', x1, 'x2', x2)
 
         update = marker_size.map(s=>
                 s * (plot_width - margin_l - margin_r) /
-                (eventdata["xaxis.range[1]"] - eventdata["xaxis.range[0]"]))
+                (x2 - x1))
+        if (myPlot.layout.shapes[0].visible && (x1 != -1 | x2 == 1)){
+            shapeUpdate = myPlot.layout.shapes.map(function(d){
+                d.visible = false;
+                return (d)
+            });
+            myPlot.layout.shapes = shapeUpdate
+        }
+        else if (!myPlot.layout.shapes[0].visible && (x1 === -1 | x2 === 1)){
+            shapeUpdate = myPlot.layout.shapes.map(function(d){
+                d.visible = true;
+                return (d)
+            });
+            myPlot.layout.shapes = shapeUpdate;
+        }
         }
         else {
-        console.log('Else: ', eventdata['xaxis.range[1]'])
+        
+        if(eventdata.shapes){
+            shapeUpdate = eventdata.shapes.map(function(d){
+                    d.visible = true;
+                    return (d)
+                });
+            myPlot.layout.shapes = shapeUpdate;
+            console.log(shapeUpdate)
+        }
+        else{
+            console.log('Else. x1', x1, 'x2', x2)
 
-        update = marker_size.map(s=>s*(plot_width-
-            margin_l - margin_r)/(xaxis_stop-xaxis_start))
+            update = marker_size.map(s=>s*(plot_width-
+                margin_l - margin_r)/(xaxis_stop-xaxis_start))
+        }
         };
     //Does not rescale Dem or GOP error
       Plotly.restyle("media_dw_focused", "marker.size", [update], [0]);
+      
 
     });
 })
