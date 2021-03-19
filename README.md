@@ -36,7 +36,9 @@ We classified 36 news organizations into the following table.
 
 ### How to run flask app
 
-Within the root directory of the repository run the command `python app/app.py`.
+- Create new/test environment
+- Run `python setup.py`
+- Within the root directory of the repository run the command `python app/app.py`.
 
 ### How to create ML models
 

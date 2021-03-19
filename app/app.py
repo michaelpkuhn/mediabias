@@ -18,8 +18,7 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-from sqlalchemy import create_engine, inspect
+from sqlalchemy import create_engine, func, inspect
 
 # from .ccdf_data import x_data
 # from .ccdf_data import y_data
@@ -52,7 +51,7 @@ app.config['DEBUG']= True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #DATABASE SET UP
-uri = 'postgres://vigleotgdkofne:42870962558c95a8818d4a758b4e989db94e92654344ab44d26537f528a8bc81@ec2-34-195-169-25.compute-1.amazonaws.com:5432/d3cp995qbfoemo'
+uri = 'postgresql://vigleotgdkofne:42870962558c95a8818d4a758b4e989db94e92654344ab44d26537f528a8bc81@ec2-34-195-169-25.compute-1.amazonaws.com:5432/d3cp995qbfoemo'
 app.config['SQLALCHEMY_DATABASE_URI'] = uri
 db = SQLAlchemy(app)
 engine = db.engine
