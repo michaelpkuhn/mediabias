@@ -121,7 +121,8 @@ def db_form():
 
 
 @app.route('/database', methods=['POST'])
-def db_query():
+def db_query(q_str = None):
+    # query_string = q_str if q_str else request.form['text']
     query_string = request.form['text']
     in_text = query_string.lower()
     search_text = ''.join(in_text.split())
@@ -130,6 +131,7 @@ def db_query():
     result = ''
     query_string_out = ''
     result = engine.execute(query).fetchall()
+    num_results = len(result)
     query_string_out = 'You queried: \"'+query_string+'\"'
 
     return render_template('database.html', media_org=result, query_string_out = query_string_out)
