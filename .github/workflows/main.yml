@@ -20,21 +20,22 @@ jobs:
           git config --global core.autocrlf false
           git config --global core.eol lf
       - uses: actions/checkout@v2
-      - name: Cache conda
-        uses: actions/cache@v2
-        env:
-          CACHE_NUMBER: 0
-        with:
-          path: ~/conda_pkgs_dir
-          key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
-               hashFiles('etc/my-environment.yml') }}
+      # Caching described: https://github.com/conda-incubator/setup-miniconda
+      # - name: Cache conda
+      #   uses: actions/cache@v2
+      #   env:
+      #     CACHE_NUMBER: 0
+      #   with:
+      #     path: ~/conda_pkgs_dir
+      #     key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
+      #          hashFiles('etc/my-environment.yml') }}
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: "anaconda-client-env"
           python-version: ${{ matrix.python-version }}
           channels: conda-forge
           # condarc-file?
-          environment-file: etc/my-environment-caching.yml
+          # environment-file: etc/my-environment-caching.yml
           use-only-tar-bz2: true
           auto-activate-base: false
       - run: python setup.py
