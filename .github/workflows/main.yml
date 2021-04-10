@@ -20,9 +20,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
           # condarc-file?
           auto-activate-base: false
-      - run: |
-          python setup.py
-          pytest
+      - run: python setup.py
+      - run: pytest
   # build:
   #   runs-on: windows-latest
   #   steps:
