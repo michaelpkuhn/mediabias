@@ -22,6 +22,7 @@ jobs:
           # condarc-file?
           auto-activate-base: false
       - run: python setup.py
+      - run: export PYTHONPATH="/d/misc_projects_d/mediabias"
       - run: pytest
   # build:
   #   runs-on: windows-latest
