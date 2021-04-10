@@ -1,0 +1,42 @@
+# Setup conda env: https://github.com/marketplace/actions/setup-miniconda
+# Actions: https://github.com/Code-For-Chicago/greater-chicago-food-despository/commit/ac373b8b9285af7216d9dcdf7e37e05c4434429e#
+  # Deploy: https://github.com/marketplace/actions/deploy-to-heroku
+
+name: Deploy
+on: [push, pull_request]
+jobs:
+  run-tests:
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONPATH: D:\a\mediabias\mediabias\
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["windows-latest"]
+        python-version: ['3.7.6']
+    steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+      - uses: actions/checkout@v2
+      # Caching described: https://github.com/conda-incubator/setup-miniconda
+      # - name: Cache conda
+      #   uses: actions/cache@v2
+      #   env:
+      #     CACHE_NUMBER: 0
+      #   with:
+      #     path: ~/conda_pkgs_dir
+      #     key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
+      #          hashFiles('etc/my-environment.yml') }}
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: "anaconda-client-env"
+          python-version: ${{ matrix.python-version }}
+          channels: conda-forge
+          # condarc-file?
+          # environment-file: etc/my-environment-caching.yml
+          use-only-tar-bz2: true
+          auto-activate-base: false
+      - run: python setup.py
+      - run: pytest
