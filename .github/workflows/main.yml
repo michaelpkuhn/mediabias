@@ -22,6 +22,7 @@ jobs:
           auto-activate-base: false
       - run: |
           python setup.py
+          pytest
   # build:
   #   runs-on: windows-latest
   #   steps:
