@@ -7,6 +7,8 @@ on: [push, pull_request]
 jobs:
   run-tests:
     runs-on: ${{ matrix.os }}
+    env:
+      PYTHONPATH="/mediabias/"
     strategy:
       fail-fast: false
       matrix:
@@ -22,7 +24,6 @@ jobs:
           # condarc-file?
           auto-activate-base: false
       - run: python setup.py
-      - run: export PYTHONPATH="/d/misc_projects_d/mediabias"
       - run: pytest
   # build:
   #   runs-on: windows-latest
