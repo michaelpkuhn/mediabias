@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Media Bias</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type ="text/css" href="static/css/mediabias.css">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/">Media Bias</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="about">About</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="methodology">Methodology</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="mlmodels">ML Models</a></li>
+            <li class="nav-item active">
+                <a class="nav-link" href="database">Search Media Scores<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="sitemap">Site Map</a></li>
+        </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+          <div class="col">
+              <h2 class="headers">Media Score</h2>
+              <p>
+                  Type in a media organization's domain to find its DW-Equivalent Score:
+              </p>
+              <form method="POST" id="usrform">
+                    <input name="text">
+                  <input type="submit" value="Run query">
+              </form>
+                <p>
+                    You queried: &#34;fox&#34;
+                </p>
+          </div>
+      </div>
+      <div class ="row table-responsive">
+          <table class="table">
+              <thead>
+                  <th>Domain Name</th>
+                  <th>Domain Count</th>
+                  <th>Nominate_dim1</th>
+                  <th>Nominate_dim2</th>
+                  <th>Dim1_StdDev</th>
+                  <th>Dim2_StdDev</th>
+                  <th>Dim1_StdErr</th>
+                  <th>Dim2_StdErr</th>
+              </thead>
+          
+            <tr>
+                <td>www.foxnews.com</td>
+                <td>3171</td>
+                <td>0.509</td>
+                <td>0.041</td>
+                <td>0.255</td>
+                <td>0.272</td>
+                <td>0.005</td>
+                <td>0.005</td>
+            </tr>
+          
+            <tr>
+                <td>www.foxbusiness.com</td>
+                <td>551</td>
+                <td>0.481</td>
+                <td>0.041</td>
+                <td>0.250</td>
+                <td>0.245</td>
+                <td>0.011</td>
+                <td>0.010</td>
+            </tr>
+          
+            <tr>
+                <td>radio.foxnews.com</td>
+                <td>82</td>
+                <td>0.491</td>
+                <td>-0.018</td>
+                <td>0.246</td>
+                <td>0.250</td>
+                <td>0.027</td>
+                <td>0.028</td>
+            </tr>
+          
+            <tr>
+                <td>fox4kc.com</td>
+                <td>62</td>
+                <td>0.342</td>
+                <td>0.229</td>
+                <td>0.269</td>
+                <td>0.123</td>
+                <td>0.034</td>
+                <td>0.016</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox10tv.com</td>
+                <td>38</td>
+                <td>0.586</td>
+                <td>0.235</td>
+                <td>0.116</td>
+                <td>0.096</td>
+                <td>0.019</td>
+                <td>0.016</td>
+            </tr>
+          
+            <tr>
+                <td>fox11online.com</td>
+                <td>36</td>
+                <td>0.439</td>
+                <td>-0.123</td>
+                <td>0.243</td>
+                <td>0.108</td>
+                <td>0.041</td>
+                <td>0.018</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox5dc.com</td>
+                <td>35</td>
+                <td>0.218</td>
+                <td>0.088</td>
+                <td>0.461</td>
+                <td>0.192</td>
+                <td>0.079</td>
+                <td>0.033</td>
+            </tr>
+          
+            <tr>
+                <td>fox59.com</td>
+                <td>26</td>
+                <td>0.313</td>
+                <td>0.162</td>
+                <td>0.278</td>
+                <td>0.234</td>
+                <td>0.056</td>
+                <td>0.047</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox9.com</td>
+                <td>24</td>
+                <td>-0.207</td>
+                <td>-0.152</td>
+                <td>0.317</td>
+                <td>0.268</td>
+                <td>0.066</td>
+                <td>0.056</td>
+            </tr>
+          
+            <tr>
+                <td>fox8.com</td>
+                <td>20</td>
+                <td>-0.017</td>
+                <td>0.119</td>
+                <td>0.408</td>
+                <td>0.157</td>
+                <td>0.094</td>
+                <td>0.036</td>
+            </tr>
+          
+            <tr>
+                <td>q13fox.com</td>
+                <td>19</td>
+                <td>-0.486</td>
+                <td>-0.205</td>
+                <td>0.185</td>
+                <td>0.126</td>
+                <td>0.044</td>
+                <td>0.030</td>
+            </tr>
+          
+            <tr>
+                <td>fox2now.com</td>
+                <td>17</td>
+                <td>0.112</td>
+                <td>0.075</td>
+                <td>0.455</td>
+                <td>0.231</td>
+                <td>0.114</td>
+                <td>0.058</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox8live.com</td>
+                <td>17</td>
+                <td>0.492</td>
+                <td>0.148</td>
+                <td>0.258</td>
+                <td>0.176</td>
+                <td>0.065</td>
+                <td>0.044</td>
+            </tr>
+          
+            <tr>
+                <td>via.fox4kc.com</td>
+                <td>16</td>
+                <td>0.545</td>
+                <td>0.243</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+            </tr>
+          
+            <tr>
+                <td>fox13now.com</td>
+                <td>14</td>
+                <td>0.588</td>
+                <td>-0.012</td>
+                <td>0.173</td>
+                <td>0.272</td>
+                <td>0.048</td>
+                <td>0.075</td>
+            </tr>
+          
+            <tr>
+                <td>foxillinois.com</td>
+                <td>14</td>
+                <td>-0.291</td>
+                <td>-0.232</td>
+                <td>0.217</td>
+                <td>0.195</td>
+                <td>0.060</td>
+                <td>0.054</td>
+            </tr>
+          
+            <tr>
+                <td>kfoxtv.com</td>
+                <td>14</td>
+                <td>0.265</td>
+                <td>0.121</td>
+                <td>0.445</td>
+                <td>0.118</td>
+                <td>0.123</td>
+                <td>0.033</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox7austin.com</td>
+                <td>14</td>
+                <td>0.388</td>
+                <td>-0.036</td>
+                <td>0.446</td>
+                <td>0.305</td>
+                <td>0.124</td>
+                <td>0.085</td>
+            </tr>
+          
+            <tr>
+                <td>foxsanantonio.com</td>
+                <td>13</td>
+                <td>0.205</td>
+                <td>-0.031</td>
+                <td>0.442</td>
+                <td>0.247</td>
+                <td>0.128</td>
+                <td>0.071</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox4now.com</td>
+                <td>13</td>
+                <td>0.556</td>
+                <td>-0.198</td>
+                <td>0.044</td>
+                <td>0.185</td>
+                <td>0.013</td>
+                <td>0.053</td>
+            </tr>
+          
+            <tr>
+                <td>fox61.com</td>
+                <td>12</td>
+                <td>-0.266</td>
+                <td>-0.097</td>
+                <td>0.281</td>
+                <td>0.120</td>
+                <td>0.085</td>
+                <td>0.036</td>
+            </tr>
+          
+            <tr>
+                <td>fox6now.com</td>
+                <td>12</td>
+                <td>0.119</td>
+                <td>-0.202</td>
+                <td>0.553</td>
+                <td>0.153</td>
+                <td>0.167</td>
+                <td>0.046</td>
+            </tr>
+          
+            <tr>
+                <td>myfox8.com</td>
+                <td>12</td>
+                <td>0.638</td>
+                <td>-0.008</td>
+                <td>0.044</td>
+                <td>0.114</td>
+                <td>0.013</td>
+                <td>0.034</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox5atlanta.com</td>
+                <td>12</td>
+                <td>0.256</td>
+                <td>0.044</td>
+                <td>0.465</td>
+                <td>0.115</td>
+                <td>0.140</td>
+                <td>0.035</td>
+            </tr>
+          
+            <tr>
+                <td>fox17online.com</td>
+                <td>11</td>
+                <td>0.494</td>
+                <td>-0.224</td>
+                <td>0.260</td>
+                <td>0.316</td>
+                <td>0.082</td>
+                <td>0.100</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox13news.com</td>
+                <td>11</td>
+                <td>0.090</td>
+                <td>-0.082</td>
+                <td>0.497</td>
+                <td>0.181</td>
+                <td>0.157</td>
+                <td>0.057</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox2detroit.com</td>
+                <td>11</td>
+                <td>-0.163</td>
+                <td>-0.063</td>
+                <td>0.410</td>
+                <td>0.340</td>
+                <td>0.130</td>
+                <td>0.108</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox5ny.com</td>
+                <td>11</td>
+                <td>-0.056</td>
+                <td>-0.054</td>
+                <td>0.531</td>
+                <td>0.256</td>
+                <td>0.168</td>
+                <td>0.081</td>
+            </tr>
+          
+            <tr>
+                <td>fox43.com</td>
+                <td>10</td>
+                <td>0.220</td>
+                <td>0.098</td>
+                <td>0.425</td>
+                <td>0.227</td>
+                <td>0.142</td>
+                <td>0.076</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox5vegas.com</td>
+                <td>10</td>
+                <td>-0.322</td>
+                <td>0.023</td>
+                <td>0.061</td>
+                <td>0.286</td>
+                <td>0.020</td>
+                <td>0.095</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox10phoenix.com</td>
+                <td>9</td>
+                <td>0.052</td>
+                <td>-0.068</td>
+                <td>0.434</td>
+                <td>0.219</td>
+                <td>0.153</td>
+                <td>0.077</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox32chicago.com</td>
+                <td>9</td>
+                <td>-0.211</td>
+                <td>-0.133</td>
+                <td>0.478</td>
+                <td>0.264</td>
+                <td>0.169</td>
+                <td>0.093</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox4news.com</td>
+                <td>9</td>
+                <td>0.470</td>
+                <td>-0.085</td>
+                <td>0.514</td>
+                <td>0.367</td>
+                <td>0.182</td>
+                <td>0.130</td>
+            </tr>
+          
+            <tr>
+                <td>www.foxcarolina.com</td>
+                <td>9</td>
+                <td>0.697</td>
+                <td>-0.150</td>
+                <td>0.053</td>
+                <td>0.103</td>
+                <td>0.019</td>
+                <td>0.036</td>
+            </tr>
+          
+            <tr>
+                <td>fox17.com</td>
+                <td>8</td>
+                <td>0.507</td>
+                <td>0.030</td>
+                <td>0.155</td>
+                <td>0.174</td>
+                <td>0.059</td>
+                <td>0.066</td>
+            </tr>
+          
+            <tr>
+                <td>fox5sandiego.com</td>
+                <td>8</td>
+                <td>0.231</td>
+                <td>0.085</td>
+                <td>0.452</td>
+                <td>0.181</td>
+                <td>0.171</td>
+                <td>0.068</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox35orlando.com</td>
+                <td>8</td>
+                <td>0.034</td>
+                <td>0.011</td>
+                <td>0.494</td>
+                <td>0.168</td>
+                <td>0.187</td>
+                <td>0.063</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox29.com</td>
+                <td>7</td>
+                <td>-0.102</td>
+                <td>0.017</td>
+                <td>0.449</td>
+                <td>0.198</td>
+                <td>0.183</td>
+                <td>0.081</td>
+            </tr>
+          
+            <tr>
+                <td>www.blackhillsfox.com</td>
+                <td>6</td>
+                <td>0.410</td>
+                <td>0.137</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox16.com</td>
+                <td>6</td>
+                <td>0.510</td>
+                <td>0.189</td>
+                <td>0.063</td>
+                <td>0.067</td>
+                <td>0.028</td>
+                <td>0.030</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox26houston.com</td>
+                <td>6</td>
+                <td>0.425</td>
+                <td>0.002</td>
+                <td>0.431</td>
+                <td>0.205</td>
+                <td>0.193</td>
+                <td>0.092</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox34.com</td>
+                <td>6</td>
+                <td>0.625</td>
+                <td>-0.035</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+            </tr>
+          
+            <tr>
+                <td>via.fox59.com</td>
+                <td>5</td>
+                <td>0.481</td>
+                <td>0.155</td>
+                <td>0.142</td>
+                <td>0.135</td>
+                <td>0.071</td>
+                <td>0.068</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox21online.com</td>
+                <td>5</td>
+                <td>0.158</td>
+                <td>-0.109</td>
+                <td>0.452</td>
+                <td>0.149</td>
+                <td>0.226</td>
+                <td>0.075</td>
+            </tr>
+          
+            <tr>
+                <td>www.foxsports.com</td>
+                <td>5</td>
+                <td>0.214</td>
+                <td>0.037</td>
+                <td>0.500</td>
+                <td>0.227</td>
+                <td>0.250</td>
+                <td>0.114</td>
+            </tr>
+          
+            <tr>
+                <td>fox45now.com</td>
+                <td>4</td>
+                <td>0.382</td>
+                <td>-0.210</td>
+                <td>0.019</td>
+                <td>0.060</td>
+                <td>0.011</td>
+                <td>0.035</td>
+            </tr>
+          
+            <tr>
+                <td>foxnewsrundown.com</td>
+                <td>4</td>
+                <td>0.356</td>
+                <td>-0.347</td>
+                <td>0.443</td>
+                <td>0.272</td>
+                <td>0.256</td>
+                <td>0.157</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox46charlotte.com</td>
+                <td>4</td>
+                <td>0.210</td>
+                <td>0.178</td>
+                <td>0.395</td>
+                <td>0.184</td>
+                <td>0.228</td>
+                <td>0.106</td>
+            </tr>
+          
+            <tr>
+                <td>fox21news.com</td>
+                <td>3</td>
+                <td>0.600</td>
+                <td>0.128</td>
+                <td>0.135</td>
+                <td>0.129</td>
+                <td>0.095</td>
+                <td>0.091</td>
+            </tr>
+          
+            <tr>
+                <td>fox28media.com</td>
+                <td>3</td>
+                <td>0.615</td>
+                <td>0.144</td>
+                <td>0.055</td>
+                <td>0.199</td>
+                <td>0.039</td>
+                <td>0.141</td>
+            </tr>
+          
+            <tr>
+                <td>fox40.com</td>
+                <td>3</td>
+                <td>-0.382</td>
+                <td>-0.188</td>
+                <td>0.126</td>
+                <td>0.161</td>
+                <td>0.089</td>
+                <td>0.114</td>
+            </tr>
+          
+            <tr>
+                <td>fox42kptm.com</td>
+                <td>3</td>
+                <td>0.367</td>
+                <td>-0.083</td>
+                <td>0.037</td>
+                <td>0.032</td>
+                <td>0.026</td>
+                <td>0.023</td>
+            </tr>
+          
+            <tr>
+                <td>fox56.com</td>
+                <td>3</td>
+                <td>-0.032</td>
+                <td>-0.129</td>
+                <td>0.588</td>
+                <td>0.144</td>
+                <td>0.416</td>
+                <td>0.102</td>
+            </tr>
+          
+            <tr>
+                <td>www.abcfoxmontana.com</td>
+                <td>3</td>
+                <td>0.036</td>
+                <td>0.173</td>
+                <td>0.441</td>
+                <td>0.061</td>
+                <td>0.312</td>
+                <td>0.043</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox21news.com</td>
+                <td>3</td>
+                <td>0.351</td>
+                <td>0.062</td>
+                <td>0.566</td>
+                <td>0.242</td>
+                <td>0.400</td>
+                <td>0.171</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox23.com</td>
+                <td>3</td>
+                <td>0.577</td>
+                <td>0.122</td>
+                <td>0.019</td>
+                <td>0.070</td>
+                <td>0.013</td>
+                <td>0.049</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox25boston.com</td>
+                <td>3</td>
+                <td>-0.136</td>
+                <td>-0.125</td>
+                <td>0.605</td>
+                <td>0.483</td>
+                <td>0.428</td>
+                <td>0.342</td>
+            </tr>
+          
+            <tr>
+                <td>www.fox47news.com</td>
+                <td>3</td>
+                <td>-0.046</td>
+                <td>0.297</td>
+                <td>0.410</td>
+                <td>0.492</td>
+                <td>0.290</td>
+                <td>0.348</td>
+            </tr>
+          
+            <tr>
+                <td>www.foxbangor.com</td>
+                <td>3</td>
+                <td>-0.243</td>
+                <td>-0.285</td>
+                <td>0.153</td>
+                <td>0.100</td>
+                <td>0.108</td>
+                <td>0.071</td>
+            </tr>
+          
+            <tr>
+                <td>www.foxnewsradio.com</td>
+                <td>3</td>
+                <td>0.622</td>
+                <td>-0.167</td>
+                <td>0.196</td>
+                <td>0.245</td>
+                <td>0.139</td>
+                <td>0.173</td>
+            </tr>
+          
+            <tr>
+                <td>fox4beaumont.com</td>
+                <td>2</td>
+                <td>0.817</td>
+                <td>-0.282</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+            </tr>
+          
+            <tr>
+                <td>foxbusiness.com</td>
+                <td>2</td>
+                <td>0.369</td>
+                <td>0.296</td>
+                <td>0.148</td>
+                <td>0.035</td>
+                <td>0.148</td>
+                <td>0.035</td>
+            </tr>
+          
+            <tr>
+                <td>foxnebraska.com</td>
+                <td>2</td>
+                <td>0.442</td>
+                <td>0.106</td>
+                <td>0.045</td>
+                <td>0.320</td>
+                <td>0.045</td>
+                <td>0.320</td>
+            </tr>
+          
+            <tr>
+                <td>foxnews.com</td>
+                <td>2</td>
+                <td>0.565</td>
+                <td>0.110</td>
+                <td>0.022</td>
+                <td>0.281</td>
+                <td>0.022</td>
+                <td>0.281</td>
+            </tr>
+          
+            <tr>
+                <td>foxrad.io</td>
+                <td>2</td>
+                <td>0.606</td>
+                <td>-0.202</td>
+                <td>0.025</td>
+                <td>0.186</td>
+                <td>0.025</td>
+                <td>0.186</td>
+            </tr>
+          
+            <tr>
+                <td>via.fox2now.com</td>
+                <td>2</td>
+                <td>-0.481</td>
+                <td>-0.080</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+            </tr>
+          
+            <tr>
+                <td>via.fox40.com</td>
+                <td>2</td>
+                <td>-0.309</td>
+                <td>-0.095</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+            </tr>
+          
+            <tr>
+                <td>via.q13fox.com</td>
+                <td>2</td>
+                <td>-0.696</td>
+                <td>-0.234</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+                <td>0.000</td>
+            </tr>
+          
+            <tr>
+                <td>www.foxla.com</td>
+                <td>2</td>
+                <td>0.084</td>
+                <td>-0.014</td>
+                <td>0.643</td>
+                <td>0.355</td>
+                <td>0.643</td>
+                <td>0.355</td>
+            </tr>
+          
+            <tr>
+                <td>www.foxnewstalk.com</td>
+                <td>2</td>
+                <td>0.665</td>
+                <td>0.013</td>
+                <td>0.076</td>
+                <td>0.327</td>
+                <td>0.076</td>
+                <td>0.327</td>
+            </tr>
+          
+        </table>
+      </div>
+  </div>
+</body>
+
+<footer>
+
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js"></script>
+<!-- <script src = "data/comm_dist.json"></script>
+<script src = "data/avg_hr_rides.json"></script>
+<script src = "data/trip_count.json"></script> -->
+<script src="static/js/dw_nom.js"></script>
+<script src="../static/js/dw_nom.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
