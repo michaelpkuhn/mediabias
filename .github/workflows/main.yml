@@ -1,0 +1,31 @@
+# Setup conda env: https://github.com/marketplace/actions/setup-miniconda
+# Actions: https://github.com/Code-For-Chicago/greater-chicago-food-despository/commit/ac373b8b9285af7216d9dcdf7e37e05c4434429e#
+  # Deploy: https://github.com/marketplace/actions/deploy-to-heroku
+
+name: Deploy
+on: [push, pull_request]
+jobs:
+  run-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["windows-latest"]
+        python-version: ['3.7.6']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: "anaconda-client-env"
+          environment-file: project_env.txt
+          python-version: ${{ matrix.python-version }}
+          # condarc-file?
+          auto-activate-base: false
+      - run: |
+          conda info
+          conda list
+  # build:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - 
