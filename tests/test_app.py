@@ -34,11 +34,12 @@ def test_site(client):
 
 def test_query(client):
     fp = './tests/resources/db_fox_query2.txt'
-    with open(fp, 'rb') as f:
+    with open(fp, 'r') as f:
         test_data = f.read()
     rv = query(client, 'fox')
     assert rv.data != None
     # with open('./tests/resources/db_fox_query2.txt', 'w+b') as f:
     #     f.write(rv.data)
     print(type(rv.data), type(test_data))
-    assert rv.data == test_data
+    # breakpoint()
+    assert rv.data == bytes(test_data, encoding='utf-8')
